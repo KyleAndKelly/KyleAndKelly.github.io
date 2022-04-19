@@ -1,5 +1,8 @@
+http://example.com/2022/04/19/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84C-%E5%AE%9E%E7%8E%B0/
 http://example.com/2022/04/16/%E7%94%A8C++%E5%AE%9E%E7%8E%B0%E7%AE%80%E6%98%93%E7%89%88vector/
 http://example.com/categories/index.html
 http://example.com/
 http://example.com/tags/C/
+http://example.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/
 http://example.com/categories/C/
+http://example.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/
