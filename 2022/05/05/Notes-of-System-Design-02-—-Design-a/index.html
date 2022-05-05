@@ -22,7 +22,7 @@
 
   <meta name="description" content="Design a TinyURL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Notes of System Design 02  — Design a TinyURL">
+<meta property="og:title" content="Notes of System Design No.02  — Design a TinyURL">
 <meta property="og:url" content="http://example.com/2022/05/05/Notes-of-System-Design-02-%E2%80%94-Design-a/index.html">
 <meta property="og:site_name" content="陈同学的博客">
 <meta property="og:description" content="Design a TinyURL">
@@ -47,7 +47,7 @@
 <meta property="og:image" content="https://files.mdnice.com/user/1489/ab3072a0-cea9-404d-a0e3-68a1a758effb.png">
 <meta property="og:image" content="https://files.mdnice.com/user/1489/1bd84ba9-23f3-4813-bbf6-ed0904f19839.png">
 <meta property="article:published_time" content="2022-05-05T05:23:57.000Z">
-<meta property="article:modified_time" content="2022-05-05T05:27:04.953Z">
+<meta property="article:modified_time" content="2022-05-05T05:31:38.233Z">
 <meta property="article:author" content="Chen">
 <meta property="article:tag" content="系统设计">
 <meta name="twitter:card" content="summary">
@@ -66,7 +66,7 @@
   };
 </script>
 
-  <title>Notes of System Design 02  — Design a TinyURL | 陈同学的博客</title>
+  <title>Notes of System Design No.02  — Design a TinyURL | 陈同学的博客</title>
   
 
 
@@ -186,7 +186,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Notes of System Design 02  — Design a TinyURL
+          Notes of System Design No.02  — Design a TinyURL
         </h1>
 
         <div class="post-meta">
@@ -197,7 +197,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-05-05 13:23:57 / 修改时间：13:27:04" itemprop="dateCreated datePublished" datetime="2022-05-05T13:23:57+08:00">2022-05-05</time>
+              <time title="创建时间：2022-05-05 13:23:57 / 修改时间：13:31:38" itemprop="dateCreated datePublished" datetime="2022-05-05T13:23:57+08:00">2022-05-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -289,11 +289,11 @@
 <li><p>方案二：可以把user_id放到长URL中，保证唯一性。但是这样如果用户没有登录的话，就得让用户自己手动去选择一个唯一的key，在生成这个唯一key的过程中，我们要不断的去生成才能得到一个唯一的key。</p>
 </li>
 </ol>
-<h3 id="Scheme-2-Generating-keys-offline"><a href="#Scheme-2-Generating-keys-offline" class="headerlink" title="Scheme 2:Generating keys offline"></a>Scheme 2:Generating keys offline</h3><p>单独设定一个专门离线产生Key的服务器(KGS: Key Generation Service)和 存储这些Key的数据库</p>
+<h4 id="Scheme-2-Generating-keys-offline"><a href="#Scheme-2-Generating-keys-offline" class="headerlink" title="Scheme 2:Generating keys offline"></a>Scheme 2:Generating keys offline</h4><p>单独设定一个专门离线产生Key的服务器(KGS: Key Generation Service)和 存储这些Key的数据库</p>
 <p><img src="https://files.mdnice.com/user/1489/99e8efac-7797-491a-9bbc-b2c4d5a255ba.png"></p>
 <p><img src="https://files.mdnice.com/user/1489/6cd68f41-c40a-4edb-8bc8-d7cd93bba938.png"></p>
 <p><img src="https://files.mdnice.com/user/1489/e0973285-6392-47fc-88fe-16be8234c57a.png"></p>
-<h2 id="Q2-Data-Partitioning-and-Replication"><a href="#Q2-Data-Partitioning-and-Replication" class="headerlink" title="Q2 :  Data Partitioning and Replication"></a>Q2 :  Data Partitioning and Replication</h2><p><img src="https://files.mdnice.com/user/1489/405fdb5d-b3aa-4a38-870c-04af7e19af3d.png"></p>
+<h3 id="Q2-Data-Partitioning-and-Replication"><a href="#Q2-Data-Partitioning-and-Replication" class="headerlink" title="Q2 :  Data Partitioning and Replication"></a>Q2 :  Data Partitioning and Replication</h3><p><img src="https://files.mdnice.com/user/1489/405fdb5d-b3aa-4a38-870c-04af7e19af3d.png"></p>
 <h3 id="Q3-Cache"><a href="#Q3-Cache" class="headerlink" title="Q3 Cache"></a>Q3 Cache</h3><p><img src="https://files.mdnice.com/user/1489/0b1219b5-6008-42e7-9ee7-53b5b282fe53.png"></p>
 <h3 id="Q4-Load-Balancer-LB"><a href="#Q4-Load-Balancer-LB" class="headerlink" title="Q4 Load Balancer (LB)"></a>Q4 Load Balancer (LB)</h3><p><img src="https://files.mdnice.com/user/1489/6dd4d8f7-c757-4148-a3e0-ecc48b3a801e.png"></p>
 <h3 id="Q5-Purging-or-DB-cleanup"><a href="#Q5-Purging-or-DB-cleanup" class="headerlink" title="Q5. Purging or DB cleanup"></a>Q5. Purging or DB cleanup</h3><p>当数据库中的URL过期了</p>
@@ -380,7 +380,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1-Functional-Requirements"><span class="nav-number">1.</span> <span class="nav-text">Step1 Functional Requirements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2-Non-Functional-Requirements"><span class="nav-number">2.</span> <span class="nav-text">Step2 Non-Functional Requirements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step3-Capacity-Estimation-and-Constraints"><span class="nav-number">3.</span> <span class="nav-text">Step3 Capacity Estimation and Constraints</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step4-System-APIs"><span class="nav-number">4.</span> <span class="nav-text">Step4 System APIs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step5-Database-Design"><span class="nav-number">5.</span> <span class="nav-text">Step5   Database Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step6-High-Level-Design"><span class="nav-number">6.</span> <span class="nav-text">Step6 High-Level Design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q1-Short-URL-Encoding"><span class="nav-number">6.1.</span> <span class="nav-text">Q1 :  Short URL Encoding</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scheme-1-Encoding-actual-URL"><span class="nav-number">6.1.1.</span> <span class="nav-text">Scheme 1: Encoding actual URL</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scheme-2-Generating-keys-offline"><span class="nav-number">6.2.</span> <span class="nav-text">Scheme 2:Generating keys offline</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q2-Data-Partitioning-and-Replication"><span class="nav-number">7.</span> <span class="nav-text">Q2 :  Data Partitioning and Replication</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q3-Cache"><span class="nav-number">7.1.</span> <span class="nav-text">Q3 Cache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q4-Load-Balancer-LB"><span class="nav-number">7.2.</span> <span class="nav-text">Q4 Load Balancer (LB)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q5-Purging-or-DB-cleanup"><span class="nav-number">7.3.</span> <span class="nav-text">Q5. Purging or DB cleanup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q6-Telemetry-x2F-Security-x2F-Permissions"><span class="nav-number">7.4.</span> <span class="nav-text">Q6 . Telemetry  &#x2F; Security &#x2F;Permissions</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1-Functional-Requirements"><span class="nav-number">1.</span> <span class="nav-text">Step1 Functional Requirements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2-Non-Functional-Requirements"><span class="nav-number">2.</span> <span class="nav-text">Step2 Non-Functional Requirements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step3-Capacity-Estimation-and-Constraints"><span class="nav-number">3.</span> <span class="nav-text">Step3 Capacity Estimation and Constraints</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step4-System-APIs"><span class="nav-number">4.</span> <span class="nav-text">Step4 System APIs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step5-Database-Design"><span class="nav-number">5.</span> <span class="nav-text">Step5   Database Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step6-High-Level-Design"><span class="nav-number">6.</span> <span class="nav-text">Step6 High-Level Design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q1-Short-URL-Encoding"><span class="nav-number">6.1.</span> <span class="nav-text">Q1 :  Short URL Encoding</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scheme-1-Encoding-actual-URL"><span class="nav-number">6.1.1.</span> <span class="nav-text">Scheme 1: Encoding actual URL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scheme-2-Generating-keys-offline"><span class="nav-number">6.1.2.</span> <span class="nav-text">Scheme 2:Generating keys offline</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q2-Data-Partitioning-and-Replication"><span class="nav-number">6.2.</span> <span class="nav-text">Q2 :  Data Partitioning and Replication</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q3-Cache"><span class="nav-number">6.3.</span> <span class="nav-text">Q3 Cache</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q4-Load-Balancer-LB"><span class="nav-number">6.4.</span> <span class="nav-text">Q4 Load Balancer (LB)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q5-Purging-or-DB-cleanup"><span class="nav-number">6.5.</span> <span class="nav-text">Q5. Purging or DB cleanup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q6-Telemetry-x2F-Security-x2F-Permissions"><span class="nav-number">6.6.</span> <span class="nav-text">Q6 . Telemetry  &#x2F; Security &#x2F;Permissions</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
