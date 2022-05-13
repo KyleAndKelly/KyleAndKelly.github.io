@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-05-13T07:41:54.502Z</updated>
+  <updated>2022-05-13T10:04:28.214Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Notes of System Design No.32  — Design a PasteBin</title>
+    <link href="http://example.com/2022/05/13/Notes-of-System-Design-No-32-%E2%80%94-Design-a-PasteBin/"/>
+    <id>http://example.com/2022/05/13/Notes-of-System-Design-No-32-%E2%80%94-Design-a-PasteBin/</id>
+    <published>2022-05-13T10:01:58.000Z</published>
+    <updated>2022-05-13T10:04:28.214Z</updated>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h2 id="00-What-is-Pastebin"><a href="#00-What-is-Pastebin" class="headerlink" title="00. What is Pastebin?"></a>00. What is Pastebin?</h2><p>这是一个网站</p><p>在输入框输入文本</p><p>网站上会生成一个URL链接</p><p>别人可以通过这个链接</p><p>访问到你输入的内容</p><h2 id="01-Functional-Requirement"><a href="#01-Functional-Requirement" class="headerlink" title="01.Functional Requirement"></a>01.Functional Requirement</h2><p><img src="https://files.mdnice.com/user/1489/12cb6936-b443-4f4c-a5af-2a9c52ebcb3e.png"></p><h2 id="02-Non-Functional-Requirement"><a href="#02-Non-Functional-Requirement" class="headerlink" title="02. Non-Functional Requirement"></a>02. Non-Functional Requirement</h2><p><img src="https://files.mdnice.com/user/1489/b596501a-c6ce-4eeb-b074-e9b90163ba7b.png"></p><h2 id="03-Assumptions"><a href="#03-Assumptions" class="headerlink" title="03. Assumptions"></a>03. Assumptions</h2><p><img src="https://files.mdnice.com/user/1489/ff094622-3609-44da-8463-7aeff7bf1482.png"></p><h2 id="04-Define-API"><a href="#04-Define-API" class="headerlink" title="04. Define API"></a>04. Define API</h2><p><img src="https://files.mdnice.com/user/1489/4dec94d3-399e-4bb8-8d99-17b005dab65d.png"></p><h2 id="05-High-Level-Design"><a href="#05-High-Level-Design" class="headerlink" title="05. High-Level Design"></a>05. High-Level Design</h2><ul><li><p>其实这个系统的设计和前面的TinyURL系统是大同小异的。本质上就相当于TinyURL的<code>长URL部分</code>变成用户输入的<code>内容部分</code>。所以可以先看一下前面的<a href="https://kyleandkelly.github.io/2022/05/05/Notes-of-System-Design-02-%E2%80%94-Design-a/">TinyURL设计</a>的部分，</p></li><li><p>和TinyURL的区别在于，TinyURL的用户输入会小一点，只是一个URL，但是PasteBin会用户输入的数据有可能会非常大，比如10M这样子的数量级 这样的如果还是用直接用普通的数据库去存的话，就会导致在用户读取时，整个链路过载，每次数据流动都是10M多数据。</p></li><li><p>优化措施1：</p></li></ul><ol><li>可以把大的文件直接存入对象存储数据库 比如S3，然后生成对象的链接 ，然后在Mapping DB里面存 S3-link 和短URL的 映射数据</li></ol><p>2.用户在取数据的时候，短URL 先到Mapping DB里面找到这个S3 link ，然后再通过S3 link 到S3里面找到实际的内容数据</p><ul><li>优化措施2：</li></ul><p>1.如果Content size &lt;10Kb，则可以直接存到Mapping DB里面<br>2.如果Content size &gt;10Kb，则可以通过S3来存储实际内容</p><ul><li>优化措施3：</li></ul><p>1.对于大文件数据 除了在Mapping DB里面存他的S3 link,还可以把preview data（ 大概10KB左右）存到Mapping DB里面，这样用户在访问的时候 就可以先把10kb的preview data 先读取出来 然后再通过S3 link 把剩下的数据读取出来</p><p><img src="https://files.mdnice.com/user/1489/059b9836-6bbf-4b7a-a34d-664bbe61a7e2.png"></p><h2 id="06-Low-Level-Design"><a href="#06-Low-Level-Design" class="headerlink" title="06. Low-Level Design"></a>06. Low-Level Design</h2><h3 id="1-DB"><a href="#1-DB" class="headerlink" title="1. DB"></a>1. DB</h3><p><img src="https://files.mdnice.com/user/1489/84638f38-0708-4e37-b3d7-d551c6926ede.png"></p><p><img src="https://files.mdnice.com/user/1489/84451bbd-277e-40b1-8a04-75f84b1b5eaa.png"></p><h3 id="2-Create-Workflow"><a href="#2-Create-Workflow" class="headerlink" title="2. Create Workflow"></a>2. Create Workflow</h3><p><img src="https://files.mdnice.com/user/1489/36251ea1-59f6-47f3-984b-48d4284d0ff1.png"></p><h3 id="3-Get-Workflow"><a href="#3-Get-Workflow" class="headerlink" title="3.Get Workflow"></a>3.Get Workflow</h3><p><img src="https://files.mdnice.com/user/1489/36d7952c-318d-4d15-8aa5-09a982f1d648.png"></p><h3 id="4-Expire-Workflow"><a href="#4-Expire-Workflow" class="headerlink" title="4.Expire Workflow"></a>4.Expire Workflow</h3><p><img src="https://files.mdnice.com/user/1489/c6a6979e-b3a7-4832-bbc5-e283cee8070b.png"></p><h2 id="07-Dive-Deep"><a href="#07-Dive-Deep" class="headerlink" title="07 . Dive Deep"></a>07 . Dive Deep</h2>]]></content>
+    
+    
+    <summary type="html">Design a PasteBin </summary>
+    
+    
+    
+    <category term="系统设计" scheme="http://example.com/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+    <category term="系统设计" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Notes of System Design No.02  — Design a TinyURL</title>
