@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-05-14T01:54:11.409Z</updated>
+  <updated>2022-05-14T05:46:42.100Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Notes of System Design No.05  — Design a Youtube</title>
+    <link href="http://example.com/2022/05/14/Notes-of-System-Design-No-53-%E2%80%94-Design-a-Youtube/"/>
+    <id>http://example.com/2022/05/14/Notes-of-System-Design-No-53-%E2%80%94-Design-a-Youtube/</id>
+    <published>2022-05-14T05:45:37.000Z</published>
+    <updated>2022-05-14T05:46:42.100Z</updated>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h2 id="01-Funtional-Requirements"><a href="#01-Funtional-Requirements" class="headerlink" title="01. Funtional Requirements"></a>01. Funtional Requirements</h2><p><img src="https://files.mdnice.com/user/1489/bd8ff45e-32bc-4ca1-80f4-9bf31e98a57a.png"></p><h2 id="02-Non-Functional-Requirements"><a href="#02-Non-Functional-Requirements" class="headerlink" title="02. Non Functional Requirements"></a>02. Non Functional Requirements</h2><p><img src="https://files.mdnice.com/user/1489/15ce9e3e-b314-474f-8d65-87c183e26721.png"></p><h2 id="03-Assumption"><a href="#03-Assumption" class="headerlink" title="03.Assumption"></a>03.Assumption</h2><p><img src="https://files.mdnice.com/user/1489/9e0154e0-b218-4605-81c4-c472a4b33237.png"></p><p><img src="https://files.mdnice.com/user/1489/f7d4ad8f-ca0e-45bc-ae96-ed5bf1b2167e.png"></p><p><img src="https://files.mdnice.com/user/1489/8bfb69f6-552d-4506-b23c-40a312eed6b7.png"></p><p><img src="https://files.mdnice.com/user/1489/64308aae-bc9e-4ac4-a336-d239706e6139.png"></p><h2 id="04-API"><a href="#04-API" class="headerlink" title="04 API"></a>04 API</h2><p><img src="https://files.mdnice.com/user/1489/074c8b44-9210-4c77-a5a0-ff88cc7e303f.png"></p><p><img src="https://files.mdnice.com/user/1489/3dc2bd89-527a-434d-9484-7a93b9ba8ba4.png"></p><h2 id="05-High-Level-Design"><a href="#05-High-Level-Design" class="headerlink" title="05 High Level Design"></a>05 High Level Design</h2><h3 id="上传业务"><a href="#上传业务" class="headerlink" title="上传业务"></a>上传业务</h3><p><img src="https://files.mdnice.com/user/1489/13eb6921-638c-44a5-bf89-2bea619a4c1e.png"></p><ul><li><p>Video Processing 模块主要做的是编码解码 提取缩略图等等<br><img src="https://files.mdnice.com/user/1489/3a798d5f-4836-40d9-a863-d3ee434f9260.png"></p></li><li><p>视频格式主要有以下这些<br><img src="https://files.mdnice.com/user/1489/3e5e1c98-2be1-4839-b86a-8fa9460d09a3.png"></p></li><li><p>什么是CDN</p></li></ul><p><img src="https://files.mdnice.com/user/1489/911232aa-07b5-4416-9f5e-93d87f53e383.png"></p><h3 id="视频播放业务"><a href="#视频播放业务" class="headerlink" title="视频播放业务"></a>视频播放业务</h3><p><img src="https://files.mdnice.com/user/1489/4d90fa45-dbb7-46e7-b65c-793f0fa99d87.png"></p><h2 id="06-Low-Level-Design"><a href="#06-Low-Level-Design" class="headerlink" title="06 Low Level Design"></a>06 Low Level Design</h2><p><img src="https://files.mdnice.com/user/1489/5286b42b-4505-4945-b3ac-bdc5afb8a9b0.png"></p><p><img src="https://files.mdnice.com/user/1489/3d365597-8956-4bf9-a52a-f36d13bb83c8.png"></p><h2 id="07-Scalability"><a href="#07-Scalability" class="headerlink" title="07 Scalability"></a>07 Scalability</h2><p><img src="https://files.mdnice.com/user/1489/50376216-1e9e-4205-b29b-338014ac6ea7.png"></p><p><img src="https://files.mdnice.com/user/1489/2746c354-de4f-4518-ad16-bc9c6927e81b.png"></p><p><a href="https://www.bilibili.com/video/BV1s5411p7dR?spm_id_from=333.999.0.0">优化方案</a></p>]]></content>
+    
+    
+    <summary type="html">Design a Youtube</summary>
+    
+    
+    
+    <category term="系统设计" scheme="http://example.com/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+    <category term="系统设计" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Notes of System Design No.04 —Design a Twitter</title>
