@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Design a Twitter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notes of System Design No.04 —Design a Twitter">
+<meta property="og:url" content="http://example.com/2022/05/14/Notes-of-System-Design-No-41-%E2%80%94Design-a-Twitter/index.html">
+<meta property="og:site_name" content="陈同学的博客">
+<meta property="og:description" content="Design a Twitter">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/214c1d26-e12a-46c0-a6eb-1d80113f93b8.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/37577333-5746-4e53-8957-acd915dd0e4d.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/4ed36dcb-d460-49e9-9290-e8373373a458.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/420ec39a-e793-418f-a1c1-dafab6becdf6.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/fed2d04c-52dd-4081-b2a0-caeb61bc6b29.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/a090b31a-3f8b-427d-92e1-24ae1de27475.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/4bb7e652-60a9-4675-9de6-7bd77100ba1b.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/86fb0489-5677-4062-bd20-453b7de136cc.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/a6d6a857-dcbb-421a-80c5-d30bbeaa3683.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/109dd247-8b38-4fa8-a6f3-9d7e926e97ef.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/e3473806-239a-43c3-82a1-c8dabd702564.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/997b3fa9-c963-474f-ab85-4d8bb94948d1.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/8f9023e0-cc1d-4655-85b1-ff42484e25ba.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/16a4e802-a559-449e-a77d-ee9867ad9caf.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/341a3107-f6d2-4860-aa06-275378f62d39.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/affdc4eb-5815-40f6-9dee-2f077c384dae.png">
+<meta property="article:published_time" content="2022-05-14T01:50:32.000Z">
+<meta property="article:modified_time" content="2022-05-14T01:51:43.550Z">
+<meta property="article:author" content="Chen">
+<meta property="article:tag" content="系统设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://files.mdnice.com/user/1489/214c1d26-e12a-46c0-a6eb-1d80113f93b8.png">
+
+<link rel="canonical" href="http://example.com/2022/05/14/Notes-of-System-Design-No-41-%E2%80%94Design-a-Twitter/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Notes of System Design No.04 —Design a Twitter | 陈同学的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="陈同学的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">陈同学的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog of Chen</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/14/Notes-of-System-Design-No-41-%E2%80%94Design-a-Twitter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="Chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈同学的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Notes of System Design No.04 —Design a Twitter
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-14 09:50:32 / 修改时间：09:51:43" itemprop="dateCreated datePublished" datetime="2022-05-14T09:50:32+08:00">2022-05-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">系统设计</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description"> Design a Twitter </div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="00-What-is-Twitter"><a href="#00-What-is-Twitter" class="headerlink" title="00.What is Twitter"></a>00.What is Twitter</h2><p><img src="https://files.mdnice.com/user/1489/214c1d26-e12a-46c0-a6eb-1d80113f93b8.png"></p>
+<p>注：TimeLine 就是按照时间顺序显示的信息流</p>
+<h2 id="01-Functional-Requirements"><a href="#01-Functional-Requirements" class="headerlink" title="01. Functional Requirements"></a>01. Functional Requirements</h2><p><img src="https://files.mdnice.com/user/1489/37577333-5746-4e53-8957-acd915dd0e4d.png"></p>
+<ul>
+<li>1.发布推特</li>
+<li>2.删除推特</li>
+<li>3.主页信息流</li>
+<li>4.用户页面信息流</li>
+<li>5.关注</li>
+<li>6.搜索</li>
+<li>7.点赞<br>…</li>
+</ul>
+<h2 id="02-Non-Functional-Requirements"><a href="#02-Non-Functional-Requirements" class="headerlink" title="02. Non-Functional Requirements"></a>02. Non-Functional Requirements</h2><p><img src="https://files.mdnice.com/user/1489/4ed36dcb-d460-49e9-9290-e8373373a458.png"></p>
+<ul>
+<li>一致性<br>每次都能读取到最新的数据</li>
+<li>可用性<br>每次刷新都不会报错，并不用求保证必须得到最新的数据，高可用性的前提是这个系统必须是可扩展的，保证系统在很多拥塞的时候，也能够很好的返回数据。</li>
+<li>Partition Tolerance(Fault Tolerance)</li>
+</ul>
+<p>系统丢包了，或者有几个设备宕机了 或者有几个磁盘坏掉了 不影响系统运行</p>
+<h2 id="03-Assumption"><a href="#03-Assumption" class="headerlink" title="03.  Assumption"></a>03.  Assumption</h2><p><img src="https://files.mdnice.com/user/1489/420ec39a-e793-418f-a1c1-dafab6becdf6.png"></p>
+<h3 id="关键指标"><a href="#关键指标" class="headerlink" title="关键指标"></a>关键指标</h3><ul>
+<li>200m的DAU  100m的新推特</li>
+<li>每个用户每天看timeline 5次，看别的用户timeline 3次</li>
+<li>每个timeline 有20条数据</li>
+<li>每个推特有280个字节(因为限制了每个推特是140个字符)  </li>
+<li>每个推特的元数据(发布时间 发布地点等等) 限制了是30个字节</li>
+<li>20%的推特含有照片 每个照片200kb</li>
+<li>10%的推特含有视频 30%的视频会被观看 每个视频2MB<h3 id="存储估算"><a href="#存储估算" class="headerlink" title="存储估算"></a>存储估算</h3></li>
+</ul>
+<p><img src="https://files.mdnice.com/user/1489/fed2d04c-52dd-4081-b2a0-caeb61bc6b29.png"></p>
+<h3 id="带宽估计"><a href="#带宽估计" class="headerlink" title="带宽估计"></a>带宽估计</h3><p><img src="https://files.mdnice.com/user/1489/a090b31a-3f8b-427d-92e1-24ae1de27475.png"><br>注:</p>
+<ul>
+<li>200M 表示的是DAU</li>
+<li>20表示的是每个Timeline显示的推特数量</li>
+</ul>
+<h2 id="04-API"><a href="#04-API" class="headerlink" title="04. API"></a>04. API</h2><p><img src="https://files.mdnice.com/user/1489/4bb7e652-60a9-4675-9de6-7bd77100ba1b.png"></p>
+<p>注：</p>
+<ul>
+<li>readHomeTimeLine 中有的参数pageSize表示设定的每个page的推特数量，因为不同的终端屏幕大小不一样 需要显示的推特数量也不一样。pageToken表示当前的页码，如果不设定的话 默认显示最新的页号所对应的推特</li>
+</ul>
+<h2 id="05-High-Level-Design"><a href="#05-High-Level-Design" class="headerlink" title="05.High Level Design"></a>05.High Level Design</h2><h3 id="Sceranio1-Post-twieets-发布推特"><a href="#Sceranio1-Post-twieets-发布推特" class="headerlink" title="Sceranio1 :Post twieets 发布推特"></a>Sceranio1 :Post twieets 发布推特</h3><p><img src="https://files.mdnice.com/user/1489/86fb0489-5677-4062-bd20-453b7de136cc.png"></p>
+<h3 id="Sceranio2-Visit-Uesr-TimeLine-访问用户的TimeLine"><a href="#Sceranio2-Visit-Uesr-TimeLine-访问用户的TimeLine" class="headerlink" title="Sceranio2 :Visit Uesr TimeLine 访问用户的TimeLine"></a>Sceranio2 :Visit Uesr TimeLine 访问用户的TimeLine</h3><p><img src="https://files.mdnice.com/user/1489/a6d6a857-dcbb-421a-80c5-d30bbeaa3683.png"></p>
+<p>每次读取某个用户的timeline都比较费时间，可以采用的改进措施是<code>采用Cache</code>.</p>
+<ul>
+<li>用户每次发布推特的时候 把他最新的推特写入到cache </li>
+<li>然后读取的时候 直接读取cache就可以了</li>
+</ul>
+<h3 id="Scenario3-Visit-Home-TimeLine"><a href="#Scenario3-Visit-Home-TimeLine" class="headerlink" title="Scenario3  Visit Home TimeLine"></a>Scenario3  Visit Home TimeLine</h3><p><img src="https://files.mdnice.com/user/1489/109dd247-8b38-4fa8-a6f3-9d7e926e97ef.png"></p>
+<h4 id="Pull-Mode"><a href="#Pull-Mode" class="headerlink" title="Pull Mode"></a>Pull Mode</h4><ul>
+<li>同样的 如果采用的方式是用户从数据库里面query每个关注者的最新推特，然后把它们merge到一起，比较费时间，可以采用的方式也是<code>采用缓存</code></li>
+</ul>
+<h4 id="Push-Mode"><a href="#Push-Mode" class="headerlink" title="Push Mode"></a>Push Mode</h4><ul>
+<li>每个被关注的大V每次发布新推特的时候 把它写入到Cache里面每个粉丝follower的hometimeline里面  在图表里就是Fan out on Write</li>
+<li>然后某个小粉丝读取的时候 直接读取Cache里面自己的hometimeline就可以了</li>
+</ul>
+<p>上面对应了两种方式Pull Mode和Push Mode<br>分析一下利弊</p>
+<p><img src="https://files.mdnice.com/user/1489/e3473806-239a-43c3-82a1-c8dabd702564.png"></p>
+<p><img src="https://files.mdnice.com/user/1489/997b3fa9-c963-474f-ab85-4d8bb94948d1.png"></p>
+<p>注：Push Mode的劣势</p>
+<p>1.每个用户发布新推特时候，写延迟更高</p>
+<ul>
+<li>但是可以采用Async tasks异步的方式 写入每个小粉丝的home timeline</li>
+<li>虽然这样会导致不同小粉丝的hometimeline 读取到更新推特的时间不一致  但是这个Eventual Consistency是可以接受的</li>
+</ul>
+<ol start="2">
+<li>如果是那种百万粉的大v，那么在发布新推特的时候 要写入百万个小粉丝的hometimeline 而且有一些粉丝可能还是僵尸粉以及不活跃的用户 那其实很耗费资源</li>
+</ol>
+<ul>
+<li>可以采用下面这个Pull Mode和Push Mode结合的方式</li>
+</ul>
+<h4 id="Pull-Mode-amp-Push-Mode（Hybrid-Solution）"><a href="#Pull-Mode-amp-Push-Mode（Hybrid-Solution）" class="headerlink" title="Pull Mode &amp; Push Mode（Hybrid Solution）"></a>Pull Mode &amp; Push Mode（Hybrid Solution）</h4><p>-<br><img src="https://files.mdnice.com/user/1489/8f9023e0-cc1d-4655-85b1-ff42484e25ba.png"></p>
+<ul>
+<li>对于一定数量以下的用户 （小V），采用Push Mode没问题</li>
+<li>对于一定数量以上的用户(大V)， 他在发布推特的时候 不会把自己的最新推特写入到缓存里面每个粉丝的timeline中，它们的小粉丝在读取自己的timeline的时候，会先从缓存里面把已有的homeline读取出来，然后如果它的关注列表里面有大V，就会采用Pull Mode的方式，去数据库里面query这个大V的最新twitter.</li>
+</ul>
+<h2 id="05-Low-Level-Design"><a href="#05-Low-Level-Design" class="headerlink" title="05. Low Level Design"></a>05. Low Level Design</h2><p><img src="https://files.mdnice.com/user/1489/16a4e802-a559-449e-a77d-ee9867ad9caf.png"></p>
+<p><img src="https://files.mdnice.com/user/1489/341a3107-f6d2-4860-aa06-275378f62d39.png"></p>
+<h2 id="06-Scalability"><a href="#06-Scalability" class="headerlink" title="06. Scalability"></a>06. Scalability</h2><p><img src="https://files.mdnice.com/user/1489/affdc4eb-5815-40f6-9dee-2f077c384dae.png"></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sf4y1e7wc?spm_id_from=333.999.0.0">着重介绍分表(Sharding) 和缓存(Caching)</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" rel="tag"># 系统设计</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/13/Notes-of-System-Design-No-03-%E2%80%94-Design-a-PasteBin/" rel="prev" title="Notes of System Design No.32  — Design a PasteBin">
+      <i class="fa fa-chevron-left"></i> Notes of System Design No.32  — Design a PasteBin
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#00-What-is-Twitter"><span class="nav-number">1.</span> <span class="nav-text">00.What is Twitter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#01-Functional-Requirements"><span class="nav-number">2.</span> <span class="nav-text">01. Functional Requirements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#02-Non-Functional-Requirements"><span class="nav-number">3.</span> <span class="nav-text">02. Non-Functional Requirements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#03-Assumption"><span class="nav-number">4.</span> <span class="nav-text">03.  Assumption</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E6%8C%87%E6%A0%87"><span class="nav-number">4.1.</span> <span class="nav-text">关键指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E4%BC%B0%E7%AE%97"><span class="nav-number">4.2.</span> <span class="nav-text">存储估算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A6%E5%AE%BD%E4%BC%B0%E8%AE%A1"><span class="nav-number">4.3.</span> <span class="nav-text">带宽估计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#04-API"><span class="nav-number">5.</span> <span class="nav-text">04. API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#05-High-Level-Design"><span class="nav-number">6.</span> <span class="nav-text">05.High Level Design</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sceranio1-Post-twieets-%E5%8F%91%E5%B8%83%E6%8E%A8%E7%89%B9"><span class="nav-number">6.1.</span> <span class="nav-text">Sceranio1 :Post twieets 发布推特</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sceranio2-Visit-Uesr-TimeLine-%E8%AE%BF%E9%97%AE%E7%94%A8%E6%88%B7%E7%9A%84TimeLine"><span class="nav-number">6.2.</span> <span class="nav-text">Sceranio2 :Visit Uesr TimeLine 访问用户的TimeLine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scenario3-Visit-Home-TimeLine"><span class="nav-number">6.3.</span> <span class="nav-text">Scenario3  Visit Home TimeLine</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pull-Mode"><span class="nav-number">6.3.1.</span> <span class="nav-text">Pull Mode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Push-Mode"><span class="nav-number">6.3.2.</span> <span class="nav-text">Push Mode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pull-Mode-amp-Push-Mode%EF%BC%88Hybrid-Solution%EF%BC%89"><span class="nav-number">6.3.3.</span> <span class="nav-text">Pull Mode &amp; Push Mode（Hybrid Solution）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#05-Low-Level-Design"><span class="nav-number">7.</span> <span class="nav-text">05. Low Level Design</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#06-Scalability"><span class="nav-number">8.</span> <span class="nav-text">06. Scalability</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Chen"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
