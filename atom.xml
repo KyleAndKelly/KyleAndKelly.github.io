@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-05-20T23:50:45.814Z</updated>
+  <updated>2022-05-24T04:33:27.849Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SSH的原理及常用命令</title>
+    <link href="http://example.com/2022/05/24/SSH%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://example.com/2022/05/24/SSH%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
+    <published>2022-05-24T04:27:47.000Z</published>
+    <updated>2022-05-24T04:33:27.849Z</updated>
+    
+    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h2 id="SSH的含义"><a href="#SSH的含义" class="headerlink" title="SSH的含义"></a>SSH的含义</h2><ul><li><p>SSH是一个应用层协议，专为远程登录会话和其他网络服务提供安全性的保障，防止信息泄露问题。</p></li><li><p>ssh服务端由2部分组成： openssh(提供ssh服务)    openssl(提供加密的程序)</p></li><li><p>ssh的客户端可以用 XShell，XManager、SecureCRT，Putty、Mobaxterm  等工具进行远程连接、登录</p></li></ul><p><img src="https://files.mdnice.com/user/1489/55e5275f-20b0-4e30-b3d1-cce30d62f991.png"></p><h2 id="SSH的历史"><a href="#SSH的历史" class="headerlink" title="SSH的历史"></a>SSH的历史</h2><ul><li>1995年，芬兰学者Tatu Ylonen设计了SSH协议，</li><li>SSH 为 Secure SHell 的缩写，由 IETF 的网络小组（Network Working Group）所制定；</li><li>SSH最初是UNIX系统上的一个程序，后来又迅速扩展到其他操作平台。SSH在正确使用时可弥补网络中的漏洞。SSH客户端适用于多种平台。几乎所有UNIX平台—包括 HP-UX、Linux、Unix、AIX、Solaris、Digital UNIX、Irix，以及其他平台，都可运行SSH。</li><li>　　SSH只是一种协议，存在多种实现，既有商业实现，也有开源实现。本文针对的实现是OpenSSH，它是自由软件，应用非常广泛。</li></ul><h2 id="SSH的原理"><a href="#SSH的原理" class="headerlink" title="SSH的原理"></a>SSH的原理</h2><p>SSH(远程连接工具)连接原理：ssh服务是一个守护进程(demon)，系统后台监听客户端的连接，ssh服务端的进程名为sshd，负责实时监听客户端的请求(IP 22默认端口)，包括公共秘钥等交换等信息。</p><p>服务器启动的时候自己产生一个密钥(768bit公钥)，本地的ssh客户端发送连接请求到ssh服务器，服务器检查连接点客户端发送的数据和IP地址，确认合法后，ssh服务器会发送密钥(768bits)给客户端，此时客户端将本地私钥(256bit)和服务器的公钥(768bit)结合成密钥对key(1024bit)，发回给服务器端，建立连接通过key-pair数据传输。</p><h4 id="基于口令的认证-密码登录"><a href="#基于口令的认证-密码登录" class="headerlink" title="基于口令的认证-密码登录"></a>基于口令的认证-密码登录</h4><p><img src="https://files.mdnice.com/user/1489/20d1c527-81d7-46a9-a59c-30311d225a56.png"></p><p><img src="https://files.mdnice.com/user/1489/20a4b7b5-a888-4502-bd09-d5f9c8e98d9c.png"></p><p><img src="https://files.mdnice.com/user/1489/039079ca-b2f9-4b7d-91c5-fc5a3a48ab9e.png"></p><h4 id="基于公钥的认证-免密码登录"><a href="#基于公钥的认证-免密码登录" class="headerlink" title="基于公钥的认证-免密码登录"></a>基于公钥的认证-免密码登录</h4><p><img src="https://files.mdnice.com/user/1489/76ed9dfe-103d-481d-b967-26d9a002f8d1.png"></p><p><img src="https://files.mdnice.com/user/1489/aab013b5-dcfd-4e5b-888e-e5d267c93af7.png"></p><p><img src="https://files.mdnice.com/user/1489/237873e0-cfe1-487b-8ee3-9dad77e29941.png"></p><h2 id="SSH的有关命令"><a href="#SSH的有关命令" class="headerlink" title="SSH的有关命令"></a>SSH的有关命令</h2><h3 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h3><p><img src="https://files.mdnice.com/user/1489/b63bd863-def7-4054-a836-c6c90537e0ab.png"></p><p><img src="https://files.mdnice.com/user/1489/29e92daf-1ec4-4f50-92b2-e8a555a9e3bc.png"></p><h3 id="登录操作"><a href="#登录操作" class="headerlink" title="登录操作"></a>登录操作</h3><p><img src="https://files.mdnice.com/user/1489/f044672e-b952-49f1-801d-fa4cebafe9ab.png"></p><h3 id="发送文件"><a href="#发送文件" class="headerlink" title="发送文件"></a>发送文件</h3><p><img src="https://files.mdnice.com/user/1489/c0101bb6-c185-440f-a931-c4a3ed713bfa.png"></p><h3 id="远程执行指令"><a href="#远程执行指令" class="headerlink" title="远程执行指令"></a>远程执行指令</h3><p><img src="https://files.mdnice.com/user/1489/cff768f1-19f0-4999-9179-746b6d5c293a.png"></p><h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h3><p><a href="https://blog.mimvp.com/article/37361.html">ref : ssh常用命令</a></p>]]></content>
+    
+    
+    <summary type="html">SSH的原理及常用命令 </summary>
+    
+    
+    
+    <category term="Linux命令" scheme="http://example.com/categories/Linux%E5%91%BD%E4%BB%A4/"/>
+    
+    
+    <category term="Linux命令" scheme="http://example.com/tags/Linux%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
   
   <entry>
     <title>原型模式C++实现</title>
