@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-06-17T05:32:56.190Z</updated>
+  <updated>2022-08-08T12:07:37.368Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>a</title>
+    <link href="http://example.com/2022/08/08/a/"/>
+    <id>http://example.com/2022/08/08/a/</id>
+    <published>2022-08-08T12:07:37.000Z</published>
+    <updated>2022-08-08T12:07:37.368Z</updated>
+    
+    
+    <summary type="html"> </summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Basic Commands in Tcl(Tool Command Language)</title>
@@ -223,111 +238,6 @@
     
     
     <category term="设计模式" scheme="http://example.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Notes of System Design No.05  — Design a Youtube</title>
-    <link href="http://example.com/2022/05/14/Notes-of-System-Design-No-53-%E2%80%94-Design-a-Youtube/"/>
-    <id>http://example.com/2022/05/14/Notes-of-System-Design-No-53-%E2%80%94-Design-a-Youtube/</id>
-    <published>2022-05-14T05:45:37.000Z</published>
-    <updated>2022-05-14T05:46:42.100Z</updated>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h2 id="01-Funtional-Requirements"><a href="#01-Funtional-Requirements" class="headerlink" title="01. Funtional Requirements"></a>01. Funtional Requirements</h2><p><img src="https://files.mdnice.com/user/1489/bd8ff45e-32bc-4ca1-80f4-9bf31e98a57a.png"></p><h2 id="02-Non-Functional-Requirements"><a href="#02-Non-Functional-Requirements" class="headerlink" title="02. Non Functional Requirements"></a>02. Non Functional Requirements</h2><p><img src="https://files.mdnice.com/user/1489/15ce9e3e-b314-474f-8d65-87c183e26721.png"></p><h2 id="03-Assumption"><a href="#03-Assumption" class="headerlink" title="03.Assumption"></a>03.Assumption</h2><p><img src="https://files.mdnice.com/user/1489/9e0154e0-b218-4605-81c4-c472a4b33237.png"></p><p><img src="https://files.mdnice.com/user/1489/f7d4ad8f-ca0e-45bc-ae96-ed5bf1b2167e.png"></p><p><img src="https://files.mdnice.com/user/1489/8bfb69f6-552d-4506-b23c-40a312eed6b7.png"></p><p><img src="https://files.mdnice.com/user/1489/64308aae-bc9e-4ac4-a336-d239706e6139.png"></p><h2 id="04-API"><a href="#04-API" class="headerlink" title="04 API"></a>04 API</h2><p><img src="https://files.mdnice.com/user/1489/074c8b44-9210-4c77-a5a0-ff88cc7e303f.png"></p><p><img src="https://files.mdnice.com/user/1489/3dc2bd89-527a-434d-9484-7a93b9ba8ba4.png"></p><h2 id="05-High-Level-Design"><a href="#05-High-Level-Design" class="headerlink" title="05 High Level Design"></a>05 High Level Design</h2><h3 id="上传业务"><a href="#上传业务" class="headerlink" title="上传业务"></a>上传业务</h3><p><img src="https://files.mdnice.com/user/1489/13eb6921-638c-44a5-bf89-2bea619a4c1e.png"></p><ul><li><p>Video Processing 模块主要做的是编码解码 提取缩略图等等<br><img src="https://files.mdnice.com/user/1489/3a798d5f-4836-40d9-a863-d3ee434f9260.png"></p></li><li><p>视频格式主要有以下这些<br><img src="https://files.mdnice.com/user/1489/3e5e1c98-2be1-4839-b86a-8fa9460d09a3.png"></p></li><li><p>什么是CDN</p></li></ul><p><img src="https://files.mdnice.com/user/1489/911232aa-07b5-4416-9f5e-93d87f53e383.png"></p><h3 id="视频播放业务"><a href="#视频播放业务" class="headerlink" title="视频播放业务"></a>视频播放业务</h3><p><img src="https://files.mdnice.com/user/1489/4d90fa45-dbb7-46e7-b65c-793f0fa99d87.png"></p><h2 id="06-Low-Level-Design"><a href="#06-Low-Level-Design" class="headerlink" title="06 Low Level Design"></a>06 Low Level Design</h2><p><img src="https://files.mdnice.com/user/1489/5286b42b-4505-4945-b3ac-bdc5afb8a9b0.png"></p><p><img src="https://files.mdnice.com/user/1489/3d365597-8956-4bf9-a52a-f36d13bb83c8.png"></p><h2 id="07-Scalability"><a href="#07-Scalability" class="headerlink" title="07 Scalability"></a>07 Scalability</h2><p><img src="https://files.mdnice.com/user/1489/50376216-1e9e-4205-b29b-338014ac6ea7.png"></p><p><img src="https://files.mdnice.com/user/1489/2746c354-de4f-4518-ad16-bc9c6927e81b.png"></p><p><a href="https://www.bilibili.com/video/BV1s5411p7dR?spm_id_from=333.999.0.0">优化方案</a></p>]]></content>
-    
-    
-    <summary type="html">Design a Youtube</summary>
-    
-    
-    
-    <category term="系统设计" scheme="http://example.com/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
-    
-    
-    <category term="系统设计" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Notes of System Design No.04 —Design a Twitter</title>
-    <link href="http://example.com/2022/05/14/Notes-of-System-Design-No-41-%E2%80%94Design-a-Twitter/"/>
-    <id>http://example.com/2022/05/14/Notes-of-System-Design-No-41-%E2%80%94Design-a-Twitter/</id>
-    <published>2022-05-14T01:50:32.000Z</published>
-    <updated>2022-05-14T01:54:11.409Z</updated>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h2 id="00-What-is-Twitter"><a href="#00-What-is-Twitter" class="headerlink" title="00.What is Twitter"></a>00.What is Twitter</h2><p><img src="https://files.mdnice.com/user/1489/214c1d26-e12a-46c0-a6eb-1d80113f93b8.png"></p><p>注：TimeLine 就是按照时间顺序显示的信息流</p><h2 id="01-Functional-Requirements"><a href="#01-Functional-Requirements" class="headerlink" title="01. Functional Requirements"></a>01. Functional Requirements</h2><p><img src="https://files.mdnice.com/user/1489/37577333-5746-4e53-8957-acd915dd0e4d.png"></p><ul><li>1.发布推特</li><li>2.删除推特</li><li>3.主页信息流</li><li>4.用户页面信息流</li><li>5.关注</li><li>6.搜索</li><li>7.点赞<br>…</li></ul><h2 id="02-Non-Functional-Requirements"><a href="#02-Non-Functional-Requirements" class="headerlink" title="02. Non-Functional Requirements"></a>02. Non-Functional Requirements</h2><p><img src="https://files.mdnice.com/user/1489/4ed36dcb-d460-49e9-9290-e8373373a458.png"></p><ul><li>一致性<br>每次都能读取到最新的数据</li><li>可用性<br>每次刷新都不会报错，并不用求保证必须得到最新的数据，高可用性的前提是这个系统必须是可扩展的，保证系统在很多拥塞的时候，也能够很好的返回数据。</li><li>Partition Tolerance(Fault Tolerance)</li></ul><p>系统丢包了，或者有几个设备宕机了 或者有几个磁盘坏掉了 不影响系统运行</p><h2 id="03-Assumption"><a href="#03-Assumption" class="headerlink" title="03.  Assumption"></a>03.  Assumption</h2><p><img src="https://files.mdnice.com/user/1489/420ec39a-e793-418f-a1c1-dafab6becdf6.png"></p><h3 id="关键指标"><a href="#关键指标" class="headerlink" title="关键指标"></a>关键指标</h3><ul><li>200m的DAU  100m的新推特</li><li>每个用户每天看timeline 5次，看别的用户timeline 3次</li><li>每个timeline 有20条数据</li><li>每个推特有280个字节(因为限制了每个推特是140个字符)  </li><li>每个推特的元数据(发布时间 发布地点等等) 限制了是30个字节</li><li>20%的推特含有照片 每个照片200kb</li><li>10%的推特含有视频 30%的视频会被观看 每个视频2MB<h3 id="存储估算"><a href="#存储估算" class="headerlink" title="存储估算"></a>存储估算</h3></li></ul><p><img src="https://files.mdnice.com/user/1489/fed2d04c-52dd-4081-b2a0-caeb61bc6b29.png"></p><h3 id="带宽估计"><a href="#带宽估计" class="headerlink" title="带宽估计"></a>带宽估计</h3><p><img src="https://files.mdnice.com/user/1489/a090b31a-3f8b-427d-92e1-24ae1de27475.png"><br>注:</p><ul><li>200M 表示的是DAU</li><li>20表示的是每个Timeline显示的推特数量</li></ul><h2 id="04-API"><a href="#04-API" class="headerlink" title="04. API"></a>04. API</h2><p><img src="https://files.mdnice.com/user/1489/4bb7e652-60a9-4675-9de6-7bd77100ba1b.png"></p><p>注：</p><ul><li>readHomeTimeLine 中有的参数pageSize表示设定的每个page的推特数量，因为不同的终端屏幕大小不一样 需要显示的推特数量也不一样。pageToken表示当前的页码，如果不设定的话 默认显示最新的页号所对应的推特</li></ul><h2 id="05-High-Level-Design"><a href="#05-High-Level-Design" class="headerlink" title="05.High Level Design"></a>05.High Level Design</h2><h3 id="Sceranio1-Post-twieets-发布推特"><a href="#Sceranio1-Post-twieets-发布推特" class="headerlink" title="Sceranio1 :Post twieets 发布推特"></a>Sceranio1 :Post twieets 发布推特</h3><p><img src="https://files.mdnice.com/user/1489/86fb0489-5677-4062-bd20-453b7de136cc.png"></p><h3 id="Sceranio2-Visit-Uesr-TimeLine-访问用户的TimeLine"><a href="#Sceranio2-Visit-Uesr-TimeLine-访问用户的TimeLine" class="headerlink" title="Sceranio2 :Visit Uesr TimeLine 访问用户的TimeLine"></a>Sceranio2 :Visit Uesr TimeLine 访问用户的TimeLine</h3><p><img src="https://files.mdnice.com/user/1489/a6d6a857-dcbb-421a-80c5-d30bbeaa3683.png"></p><p>每次读取某个用户的timeline都比较费时间，可以采用的改进措施是<code>采用Cache</code>.</p><ul><li>用户每次发布推特的时候 把他最新的推特写入到cache </li><li>然后读取的时候 直接读取cache就可以了</li></ul><h3 id="Scenario3-Visit-Home-TimeLine"><a href="#Scenario3-Visit-Home-TimeLine" class="headerlink" title="Scenario3  Visit Home TimeLine"></a>Scenario3  Visit Home TimeLine</h3><p><img src="https://files.mdnice.com/user/1489/109dd247-8b38-4fa8-a6f3-9d7e926e97ef.png"></p><h4 id="Pull-Mode"><a href="#Pull-Mode" class="headerlink" title="Pull Mode"></a>Pull Mode</h4><ul><li>同样的 如果采用的方式是用户从数据库里面query每个关注者的最新推特，然后把它们merge到一起，比较费时间，可以采用的方式也是<code>采用缓存</code></li></ul><h4 id="Push-Mode"><a href="#Push-Mode" class="headerlink" title="Push Mode"></a>Push Mode</h4><ul><li>每个被关注的大V每次发布新推特的时候 把它写入到Cache里面每个粉丝follower的hometimeline里面  在图表里就是Fan out on Write</li><li>然后某个小粉丝读取的时候 直接读取Cache里面自己的hometimeline就可以了</li></ul><p>上面对应了两种方式Pull Mode和Push Mode<br>分析一下利弊</p><p><img src="https://files.mdnice.com/user/1489/e3473806-239a-43c3-82a1-c8dabd702564.png"></p><p><img src="https://files.mdnice.com/user/1489/997b3fa9-c963-474f-ab85-4d8bb94948d1.png"></p><p>注：Push Mode的劣势</p><p>1.每个用户发布新推特时候，写延迟更高</p><ul><li>但是可以采用Async tasks异步的方式 写入每个小粉丝的home timeline</li><li>虽然这样会导致不同小粉丝的hometimeline 读取到更新推特的时间不一致  但是这个Eventual Consistency是可以接受的</li></ul><ol start="2"><li>如果是那种百万粉的大v，那么在发布新推特的时候 要写入百万个小粉丝的hometimeline 而且有一些粉丝可能还是僵尸粉以及不活跃的用户 那其实很耗费资源</li></ol><ul><li>可以采用下面这个Pull Mode和Push Mode结合的方式</li></ul><h4 id="Pull-Mode-amp-Push-Mode（Hybrid-Solution）"><a href="#Pull-Mode-amp-Push-Mode（Hybrid-Solution）" class="headerlink" title="Pull Mode &amp; Push Mode（Hybrid Solution）"></a>Pull Mode &amp; Push Mode（Hybrid Solution）</h4><p>-<br><img src="https://files.mdnice.com/user/1489/8f9023e0-cc1d-4655-85b1-ff42484e25ba.png"></p><ul><li>对于一定数量以下的用户 （小V），采用Push Mode没问题</li><li>对于一定数量以上的用户(大V)， 他在发布推特的时候 不会把自己的最新推特写入到缓存里面每个粉丝的timeline中，它们的小粉丝在读取自己的timeline的时候，会先从缓存里面把已有的homeline读取出来，然后如果它的关注列表里面有大V，就会采用Pull Mode的方式，去数据库里面query这个大V的最新twitter.</li></ul><h2 id="05-Low-Level-Design"><a href="#05-Low-Level-Design" class="headerlink" title="05. Low Level Design"></a>05. Low Level Design</h2><p><img src="https://files.mdnice.com/user/1489/16a4e802-a559-449e-a77d-ee9867ad9caf.png"></p><p><img src="https://files.mdnice.com/user/1489/341a3107-f6d2-4860-aa06-275378f62d39.png"></p><h2 id="06-Scalability"><a href="#06-Scalability" class="headerlink" title="06. Scalability"></a>06. Scalability</h2><p><img src="https://files.mdnice.com/user/1489/affdc4eb-5815-40f6-9dee-2f077c384dae.png"></p><p><a href="https://www.bilibili.com/video/BV1Sf4y1e7wc?spm_id_from=333.999.0.0">着重介绍分表(Sharding) 和缓存(Caching)</a></p>]]></content>
-    
-    
-    <summary type="html"> Design a Twitter </summary>
-    
-    
-    
-    <category term="系统设计" scheme="http://example.com/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
-    
-    
-    <category term="系统设计" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Notes of System Design No.03  — Design a PasteBin</title>
-    <link href="http://example.com/2022/05/13/Notes-of-System-Design-No-03-%E2%80%94-Design-a-PasteBin/"/>
-    <id>http://example.com/2022/05/13/Notes-of-System-Design-No-03-%E2%80%94-Design-a-PasteBin/</id>
-    <published>2022-05-13T10:01:58.000Z</published>
-    <updated>2022-05-14T01:52:49.023Z</updated>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h2 id="00-What-is-Pastebin"><a href="#00-What-is-Pastebin" class="headerlink" title="00. What is Pastebin?"></a>00. What is Pastebin?</h2><p>这是一个网站</p><p>在输入框输入文本</p><p>网站上会生成一个URL链接</p><p>别人可以通过这个链接</p><p>访问到你输入的内容</p><h2 id="01-Functional-Requirement"><a href="#01-Functional-Requirement" class="headerlink" title="01.Functional Requirement"></a>01.Functional Requirement</h2><p><img src="https://files.mdnice.com/user/1489/12cb6936-b443-4f4c-a5af-2a9c52ebcb3e.png"></p><h2 id="02-Non-Functional-Requirement"><a href="#02-Non-Functional-Requirement" class="headerlink" title="02. Non-Functional Requirement"></a>02. Non-Functional Requirement</h2><p><img src="https://files.mdnice.com/user/1489/b596501a-c6ce-4eeb-b074-e9b90163ba7b.png"></p><h2 id="03-Assumptions"><a href="#03-Assumptions" class="headerlink" title="03. Assumptions"></a>03. Assumptions</h2><p><img src="https://files.mdnice.com/user/1489/ff094622-3609-44da-8463-7aeff7bf1482.png"></p><h2 id="04-Define-API"><a href="#04-Define-API" class="headerlink" title="04. Define API"></a>04. Define API</h2><p><img src="https://files.mdnice.com/user/1489/4dec94d3-399e-4bb8-8d99-17b005dab65d.png"></p><h2 id="05-High-Level-Design"><a href="#05-High-Level-Design" class="headerlink" title="05. High-Level Design"></a>05. High-Level Design</h2><ul><li><p>其实这个系统的设计和前面的TinyURL系统是大同小异的。本质上就相当于TinyURL的<code>长URL部分</code>变成用户输入的<code>内容部分</code>。所以可以先看一下前面的<a href="https://kyleandkelly.github.io/2022/05/05/Notes-of-System-Design-02-%E2%80%94-Design-a/">TinyURL设计</a>的部分，</p></li><li><p>和TinyURL的区别在于，TinyURL的用户输入会小一点，只是一个URL，但是PasteBin会用户输入的数据有可能会非常大，比如10M这样子的数量级 这样的如果还是用直接用普通的数据库去存的话，就会导致在用户读取时，整个链路过载，每次数据流动都是10M多数据。</p></li><li><p>优化措施1：</p></li></ul><ol><li>可以把大的文件直接存入对象存储数据库 比如S3，然后生成对象的链接 ，然后在Mapping DB里面存 S3-link 和短URL的 映射数据</li></ol><p>2.用户在取数据的时候，短URL 先到Mapping DB里面找到这个S3 link ，然后再通过S3 link 到S3里面找到实际的内容数据</p><ul><li>优化措施2：</li></ul><p>1.如果Content size &lt;10Kb，则可以直接存到Mapping DB里面<br>2.如果Content size &gt;10Kb，则可以通过S3来存储实际内容</p><ul><li>优化措施3：</li></ul><p>1.对于大文件数据 除了在Mapping DB里面存他的S3 link,还可以把preview data（ 大概10KB左右）存到Mapping DB里面，这样用户在访问的时候 就可以先把10kb的preview data 先读取出来 然后再通过S3 link 把剩下的数据读取出来</p><p><img src="https://files.mdnice.com/user/1489/059b9836-6bbf-4b7a-a34d-664bbe61a7e2.png"></p><h2 id="06-Low-Level-Design"><a href="#06-Low-Level-Design" class="headerlink" title="06. Low-Level Design"></a>06. Low-Level Design</h2><h3 id="1-DB"><a href="#1-DB" class="headerlink" title="1. DB"></a>1. DB</h3><p><img src="https://files.mdnice.com/user/1489/84638f38-0708-4e37-b3d7-d551c6926ede.png"></p><p><img src="https://files.mdnice.com/user/1489/84451bbd-277e-40b1-8a04-75f84b1b5eaa.png"></p><h3 id="2-Create-Workflow"><a href="#2-Create-Workflow" class="headerlink" title="2. Create Workflow"></a>2. Create Workflow</h3><p><img src="https://files.mdnice.com/user/1489/36251ea1-59f6-47f3-984b-48d4284d0ff1.png"></p><h3 id="3-Get-Workflow"><a href="#3-Get-Workflow" class="headerlink" title="3.Get Workflow"></a>3.Get Workflow</h3><p><img src="https://files.mdnice.com/user/1489/36d7952c-318d-4d15-8aa5-09a982f1d648.png"></p><h3 id="4-Expire-Workflow"><a href="#4-Expire-Workflow" class="headerlink" title="4.Expire Workflow"></a>4.Expire Workflow</h3><p><img src="https://files.mdnice.com/user/1489/c6a6979e-b3a7-4832-bbc5-e283cee8070b.png"></p><h2 id="07-Dive-Deep"><a href="#07-Dive-Deep" class="headerlink" title="07 . Dive Deep"></a>07 . Dive Deep</h2>]]></content>
-    
-    
-    <summary type="html">Design a PasteBin </summary>
-    
-    
-    
-    <category term="系统设计" scheme="http://example.com/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
-    
-    
-    <category term="系统设计" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Notes of System Design No.02  — Design a TinyURL</title>
-    <link href="http://example.com/2022/05/05/Notes-of-System-Design-02-%E2%80%94-Design-a/"/>
-    <id>http://example.com/2022/05/05/Notes-of-System-Design-02-%E2%80%94-Design-a/</id>
-    <published>2022-05-05T05:23:57.000Z</published>
-    <updated>2022-05-13T07:41:54.502Z</updated>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><h2 id="1-Functional-Requirements"><a href="#1-Functional-Requirements" class="headerlink" title="1.Functional Requirements"></a>1.Functional Requirements</h2><p><img src="https://files.mdnice.com/user/1489/1efe7149-d6da-41c5-a004-63da6c991ae6.png"></p><ul><li>1.长链接-&gt;短链接(写)</li><li>2.短链接-&gt;长链接(读)</li><li>3.可以设置超时时间</li><li>4.相同的长链接映射到不同的短链接上 </li><li><ol start="5"><li>短链接的长度应该尽量短</li></ol></li><li>6.短链接应该不可预测</li></ul><h2 id="2-Non-Functional-Requirements"><a href="#2-Non-Functional-Requirements" class="headerlink" title="2.Non-Functional Requirements"></a>2.Non-Functional Requirements</h2><p><img src="https://files.mdnice.com/user/1489/bdb4dc03-930d-4db4-bc0a-71d3d4f8365e.png"></p><p>一般系统设计的非功能性指标都会从这几方面来考量</p><ul><li><p>1.高可用性 ：不能有单点失败</p></li><li><p>2.可扩展性 ：能够方便的针对大量请求扩充</p></li><li><p>3.低延迟性： 读写的延迟尽量低</p></li><li><p>4.强一致性：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">强一致性：系统中的某个数据被成功更新后，</span><br><span class="line">后续任何对该数据的读取操作都将得到更新后的值；</span><br><span class="line"></span><br><span class="line">弱一致性：系统中的某个数据被更新后，</span><br><span class="line">后续对该数据的读取操作可能得到更新后的值，</span><br><span class="line">也可能是更改前的值。但经过“不一致时间窗口”这段时间后，</span><br><span class="line">后续对该数据的读取都是更新后的值；</span><br><span class="line"></span><br><span class="line">最终一致性：是弱一致性的特殊形式，</span><br><span class="line">存储系统保证在没有新的更新的条件下，</span><br><span class="line">最终所有的访问都是最后更新的值。</span><br></pre></td></tr></table></figure><p>在这个系统里面，要求的是强一致性。也就是说每次写请求更新完数据以后，进行读请求立马就能得到更新完的数据</p></li><li><p>5.持久性：不能丢数据</p></li><li><p>6.Read Heavy: 读写比例&#x3D; 100:1</p></li></ul><h2 id="3-Assumption"><a href="#3-Assumption" class="headerlink" title="3.Assumption"></a>3.Assumption</h2><p><img src="https://files.mdnice.com/user/1489/1b8ee4ff-130a-4d50-9168-e58683a1f464.png"></p><ul><li>假定短URL的字符组成-&gt;7个字符的Base64构成</li><li>假定每秒写100K次-&gt;1.4年可以耗尽7个字符长度的URL-&gt; 89.6年可以耗尽8个字符构成的URL</li><li>假定长URL 最多有2083个字符长度构成</li></ul><p>按照以上假设</p><ul><li>在数据库中整个长短链接映射数据长度为2095(8个字符长度的短URL+ 2083个字符长度的长URL+4个字符长度的超时时间设定)</li><li>每秒100K次写请求 则每年会写入6599TB的数据</li><li>这么大的数据需要做Partition</li></ul><h2 id="4-API"><a href="#4-API" class="headerlink" title="4. API"></a>4. API</h2><p><img src="https://files.mdnice.com/user/1489/054b31ab-721a-41e7-a2e6-04db302c17ad.png"></p><h2 id="5-High-Level-Design"><a href="#5-High-Level-Design" class="headerlink" title="5. High Level Design"></a>5. High Level Design</h2><p><img src="https://files.mdnice.com/user/1489/5dc18b16-4333-4898-b886-72aec961886a.png"></p><h3 id="写请求-长URL-gt-短URL"><a href="#写请求-长URL-gt-短URL" class="headerlink" title="写请求(长URL-&gt;短URL)"></a>写请求(长URL-&gt;短URL)</h3><ul><li><p>请求过来以后，负载均衡LB把请求分配到期中的一台App Server。为保证不会单点失败，App Server至少需要三台，因为如果是两台的话 如果其中一台正在升级维护，那么请i去就会全部的发到另外一台机器上 造成那台机器的过载.</p></li><li><p>Monitor监控每台App Server 的CPU 内存 网络 磁盘等等 ，达到某一个阈值的时候 动态的增加或者减少某一个机器的请求</p></li><li><p>DB存储长短链接映射的数据。需要对数据做Prtition，每个partition还需要做Replica复制备份，保证高可用</p></li><li><p>MemCache缓存数据库中产常见数据 减少延迟</p></li><li><p>App Server中由短链接映射生成长链接(Key Generation)的方式可以有以下几种</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. Random String</span><br><span class="line">随机生成八位的字符串</span><br><span class="line"></span><br><span class="line">问题1：不同的AppServer处理相同的长URL的时候有可能会生成相同的字符串</span><br><span class="line"></span><br><span class="line">措施2： 可以对不同的App Server 分配一个两位不同的前缀，后六位随机生成。</span><br><span class="line"></span><br><span class="line">缺点： 相同的App Server</span><br><span class="line">重复处理相同的长URL的时候 有可能已经生成过了存在数据库里了 这个时候需要先检查数据库，再不断的重新用随机生成算法 直到生成一个不同的字符串</span><br></pre></td></tr></table></figure></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2.MD5</span><br><span class="line">Long URL--&gt;MD5--&gt;128bits number --&gt;base64--&gt;21char string --&gt;Sub string --&gt;  前8 chars strign </span><br><span class="line"></span><br><span class="line">如果产生冲突 就在长URL的前面或者后面随机的增加一些字符，重新的走一遍这个过程</span><br></pre></td></tr></table></figure><p><img src="https://files.mdnice.com/user/1489/d6a6ce29-bf99-4d43-b9c8-49e8fdf448d8.png"></p><p>Ref: </p><p><a href="https://blog.csdn.net/qq_42992084/article/details/112252684">MD5</a></p><p><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017684507717184">Base64</a></p><p>先用MD5算法 处理原来的长链接 得到128bit的二进制数据</p><p>再用Base64编码这个128bit 二进制 ，得到一个大于21个字符的数据</p><p>在从这21左右字符里面 挑头6个或者8个作为最终的短链接编码</p><p>缺点：和上面一样 如果生成以后 检查数据库发现有冲突 那么就需要重新走一遍流程 再次生成随机串 直到没有冲突 ，增加了延迟</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3. 维护一个专门的 Key Generation服务</span><br><span class="line">用来专门生成短URL key</span><br></pre></td></tr></table></figure><p><img src="https://files.mdnice.com/user/1489/dee19773-44aa-4d29-bd3e-512af773bfbf.png"></p><p>机制：</p><ul><li>这个服务会提前在线下生成一堆短URL 存在数据库中，当App Server 需要一个新短URL的时候 就从这个数据库中获取 标记为已使用</li><li>这里增加的App Server也需要LB负载均衡和多个App Server 还有数据库也需要Partition和Replica.<br>优势：</li><li>这种方式把冲突放到了线下 而不是线上 减少了延迟</li></ul><p>改进：</p><ul><li>可以设定App Server 每次从Key Generation模块取短URL的时候 ，每次取批量的URL 存在自己的内存里 一直到它把自己的url用完才重新去 Key Generation模块取</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4.维护一个全局的计数器</span><br></pre></td></tr></table></figure><p><img src="https://files.mdnice.com/user/1489/fe78f4d5-c85b-44b1-8015-eb52a51ad8ba.png"></p><p>机制：</p><ul><li>每一个App Server读取全局的计数器，更新计数。</li><li>然后在App Server里面<br>把读取到的计数器转换为64进制数，把64进制串作为新的短链</li><li>App Server 操作全局计数器的时候要加锁</li><li>这样的方式全局计数器的QPS比较高</li></ul><p>改进：</p><ul><li>App Server每一次不是取一个数，而是取一个范围.在某一个App Server<br>要素：</li><li>某一个App Server宕机了，损失了一部分范围数怎么半？</li></ul><p>不用担心，因为只是损失一部分 损失不大</p><ul><li>每个App server 读取时候设定的范围是多大呢？</li></ul><p>可以用每秒写的次数&#x2F;App server的机器数，比如每秒100000writes,有20个App server 则设定的范围可以是 100000&#x2F;20&#x3D;5000</p><ul><li>这种方式生成的短url是可被预测的吗？</li></ul><p>不是的 因为在用户发送请求到LB负载均衡的时候，分发到的App server是不确定的。不同的App server维护的计数范围是不同的</p><p>要实在担心会出现可预测的问题，可以在App server读取全局计数器生成范围的时候 用洗牌算法 把范围打乱，这样就不会按照顺序依次分配</p><p>全局计数器的实现方法：</p><ul><li>关系型数据库</li></ul><p>要保证读写串行化 以及加锁解锁方法 可以用关系型数据库实现。</p><ul><li>ZooKeeper</li></ul><p>Zookeeper有分布式的配置管理，可以实现上述的功能需求</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对比</span><br></pre></td></tr></table></figure><p><img src="https://files.mdnice.com/user/1489/38b6a951-a471-4572-9be3-c8addebb4bfb.png"></p><h2 id="6-Low-Level-Design"><a href="#6-Low-Level-Design" class="headerlink" title="6. Low Level Design"></a>6. Low Level Design</h2><h3 id="DB-Schema"><a href="#DB-Schema" class="headerlink" title="DB Schema"></a>DB Schema</h3><p><img src="https://files.mdnice.com/user/1489/cb9b6ca3-8628-46b5-b9a1-910e2c963462.png"></p><ul><li><p>只需要一张表 三个字段就可以</p></li><li><p>关系型数据库和非关系型数据库的比较</p></li></ul><p><img src="https://files.mdnice.com/user/1489/f78139d9-8f71-4f67-b04d-2151c59a4606.png"></p><ul><li>选择非关系型数据库的理由</li></ul><p><img src="https://files.mdnice.com/user/1489/e48af341-002d-4fbc-8cb7-7cf7ede7a37d.png"></p><h3 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h3><ul><li>由长URL创建一个短URL的流程</li></ul><p><img src="https://files.mdnice.com/user/1489/c621bef2-288a-4641-be28-40cf1f236002.png"></p><ul><li>由短URL读取一个长URL的流程</li></ul><p><img src="https://files.mdnice.com/user/1489/cd5772ae-0f10-45d9-be9f-eae5916df222.png"></p><h2 id="7-Dive-Deep"><a href="#7-Dive-Deep" class="headerlink" title="7. Dive Deep"></a>7. Dive Deep</h2>]]></content>
-    
-    
-    <summary type="html"> Design a TinyURL</summary>
-    
-    
-    
-    <category term="系统设计" scheme="http://example.com/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
-    
-    
-    <category term="系统设计" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Notes of System Design No.01 —Answering the SDIs Step by Step</title>
-    <link href="http://example.com/2022/05/04/Notes-of-System-Design-No-01-%E2%80%94Answering-the-SDIs-Step-by-Step/"/>
-    <id>http://example.com/2022/05/04/Notes-of-System-Design-No-01-%E2%80%94Answering-the-SDIs-Step-by-Step/</id>
-    <published>2022-05-04T06:52:06.000Z</published>
-    <updated>2022-05-04T07:03:53.683Z</updated>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/><p>In this Article , </p><p>I will give a introduction to </p><p>the guildline of answering the SDIs(system design interviews) problem</p><p>lets get into it!</p><p>Mainly Reference:<a href="https://www.educative.io/courses/grokking-the-system-design-interview">https://www.educative.io/courses/grokking-the-system-design-interview</a> </p><h2 id="Step-1-Requirements-clarifications"><a href="#Step-1-Requirements-clarifications" class="headerlink" title="Step 1: Requirements clarifications"></a>Step 1: Requirements clarifications</h2><p>在一开始的时候问清楚设计的一些关键指标，缩小设计范围</p><p> Define the end goals And   clarifying ambiguities early in the interview is critical.</p><p><img src="https://files.mdnice.com/user/1489/df9c4df3-40ed-41bf-901d-68b0dbf29ddc.png"></p><h2 id="Step2-System-interface-Design"><a href="#Step2-System-interface-Design" class="headerlink" title="Step2 System interface Design"></a>Step2 System interface Design</h2><p>明确这个系统会需要哪些接口</p><p><img src="https://files.mdnice.com/user/1489/4b26cc35-f619-4a69-b844-4e995e377517.png"></p><h2 id="Step3-Back-of-the-envelope-estimation"><a href="#Step3-Back-of-the-envelope-estimation" class="headerlink" title="Step3   Back-of-the-envelope estimation"></a>Step3   Back-of-the-envelope estimation</h2><p>粗略的估计系统的规模</p><p><img src="https://files.mdnice.com/user/1489/ad5f1ed1-8a0b-4ac0-b64c-66f97b9158c3.png"></p><h2 id="Step4-Defining-data-model"><a href="#Step4-Defining-data-model" class="headerlink" title="Step4   Defining data model"></a>Step4   Defining data model</h2><p>确定数据结构</p><p><img src="https://files.mdnice.com/user/1489/7e82b4f9-b727-458f-b4bd-13fea0f80c47.png"></p><h2 id="Step5-High-level-design"><a href="#Step5-High-level-design" class="headerlink" title="Step5  High-level design"></a>Step5  High-level design</h2><p>顶层设计，用框图的形式画出系统的结构</p><p><img src="https://files.mdnice.com/user/1489/44e36158-cab9-4a0f-a55c-68769f20fe3b.png"></p><p><img src="https://files.mdnice.com/user/1489/811980f0-8214-4072-bb10-6383446d4c18.png"></p><h2 id="Step6-Detailed-Degisn"><a href="#Step6-Detailed-Degisn" class="headerlink" title="Step6  Detailed Degisn"></a>Step6  Detailed Degisn</h2><p>根据面试官感兴趣的方向,</p><p> 针对里面的2-3个模块作重点且细节的讨论</p><p>可以给出几种不同的设计方案 然后说出利弊 </p><p>然后说明为什么用目前的这个设计方案。</p><p><img src="https://files.mdnice.com/user/1489/72a6a418-8d62-4a09-82a5-753f4e732313.png"></p><h2 id="Step7-Identifying-and-resolving-bottlenecks"><a href="#Step7-Identifying-and-resolving-bottlenecks" class="headerlink" title="Step7  Identifying and resolving bottlenecks"></a>Step7  Identifying and resolving bottlenecks</h2><p>尽可能多的找到目前系统存在的弊端</p><p>然后给出不同的解决方案去处理它</p><p><img src="https://files.mdnice.com/user/1489/c6481036-7a54-4c42-a864-406366c8f2c7.png"></p>]]></content>
-    
-    
-    <summary type="html">Answering the SDIs Step by Step </summary>
-    
-    
-    
-    <category term="系统设计" scheme="http://example.com/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
-    
-    
-    <category term="系统设计" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
