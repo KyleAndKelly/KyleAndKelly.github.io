@@ -1,3 +1,8 @@
+http://example.com/2022/08/19/what-is-Elmore-delay/
+http://example.com/2022/08/19/what-is-Fan-out/
+http://example.com/2022/08/19/Linux-Command%E2%80%94%E2%80%94ls/
+http://example.com/2022/08/19/Linux-Command-cut-grep-sort-uniq-wc/
+http://example.com/2022/08/19/Linux-Command-Wildcard/
 http://example.com/2022/06/17/Basic-Commands-in-Tcl-Tool-Command-Language/
 http://example.com/2022/05/29/C-%E4%B8%AD%E7%9A%84const%E5%85%B3%E9%94%AE%E5%AD%97/
 http://example.com/2022/05/29/C-%E4%B8%AD%E7%9A%84%E5%BC%95%E7%94%A8/
@@ -18,7 +23,11 @@ http://example.com/tags/C/
 http://example.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/
 http://example.com/tags/Linux%E5%91%BD%E4%BB%A4/
 http://example.com/tags/TCL/
+http://example.com/tags/Linux-Command/
+http://example.com/tags/EDA/
 http://example.com/categories/C/
 http://example.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/
 http://example.com/categories/Linux%E5%91%BD%E4%BB%A4/
 http://example.com/categories/TCL/
+http://example.com/categories/Linux-Command/
+http://example.com/categories/EDA/

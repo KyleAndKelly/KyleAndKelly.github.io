@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-06-17T05:32:56.190Z</updated>
+  <updated>2022-08-19T13:08:06.584Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,111 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux Command —— Wildcard</title>
+    <link href="http://example.com/2022/08/19/Linux-Command-Wildcard/"/>
+    <id>http://example.com/2022/08/19/Linux-Command-Wildcard/</id>
+    <published>2022-08-19T13:04:07.000Z</published>
+    <updated>2022-08-19T13:08:06.584Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="asterisk"><a href="#asterisk" class="headerlink" title="* asterisk"></a>* asterisk</h3><ul><li><p>this can represent any number of characters (including zero, in other words, zero or more characters). If you specified a “cd*” it would use “cda”, “cdrom”, “cdrecord” and anything that starts with “cd” also including “cd” itself. “m*l” could by mill, mull, ml, and anything that starts with an m and ends with an l.</p></li><li><h3 id="question-mark"><a href="#question-mark" class="headerlink" title="?  question mark"></a>?  question mark</h3></li><li><p>this can represent any single character. If you specified something at the command line like “hd?” GNU&#x2F;Linux would look for hda, hdb, hdc and every other letter&#x2F;number between a-z, 0-9.</p><h3 id="square-brackets"><a href="#square-brackets" class="headerlink" title="[]   square brackets"></a>[]   square brackets</h3></li><li><p>specifies a range. If you did m[a,o,u]m it can become: mam, mum, mom</p><h3 id="minus-sign-in-the-square-brackets"><a href="#minus-sign-in-the-square-brackets" class="headerlink" title="[-]  minus sign in the square brackets"></a>[-]  minus sign in the square brackets</h3></li><li><p>if you did: m[a-d]m it can become anything that starts and ends with m and has any character a to d in between. For example, these would work: mam, mbm, mcm, mdm. This kind of wildcard specifies an “or” relationship (you only need one to match).</p><h3 id="Exponential-sign-in-the-square-brackets"><a href="#Exponential-sign-in-the-square-brackets" class="headerlink" title="[^] Exponential sign in the square brackets"></a>[^] Exponential sign in the square brackets</h3></li><li><p>if you did: m[a-d]m it can become anything that starts and ends with m and has any character excepts a to d in between.</p></li></ul>]]></content>
+    
+    
+    <summary type="html"> Linux Command —— Wildcard</summary>
+    
+    
+    
+    <category term="Linux Command" scheme="http://example.com/categories/Linux-Command/"/>
+    
+    
+    <category term="Linux Command" scheme="http://example.com/tags/Linux-Command/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux Command _ cut/grep/sort/uniq/wc</title>
+    <link href="http://example.com/2022/08/19/Linux-Command-cut-grep-sort-uniq-wc/"/>
+    <id>http://example.com/2022/08/19/Linux-Command-cut-grep-sort-uniq-wc/</id>
+    <published>2022-08-19T13:03:44.000Z</published>
+    <updated>2022-08-19T13:09:06.358Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH | cut -d  &#x27;:&#x27;  -f 3,5</span><br></pre></td></tr></table></figure><ul><li>-d  Use colon instaed TAB as a field delimiter ,and </li><li>-f  Select 3 to 5 fields of the line data .also print line data with no delimiter charater,unless the  -s option is specified<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep  [-cinv]  &#x27;target string&#x27;  filename </span><br></pre></td></tr></table></figure></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat file1 | grep  [-cinv]  &#x27;target string&#x27;</span><br></pre></td></tr></table></figure><ul><li>-c  print the count of  matching line  in the input file</li><li>-i   serach the target string ingoring case distinction</li><li>-n print result line number</li><li>-v Invert the sense of matching .print line data with no target string</li></ul><h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat file1 | sort  [-frutk] </span><br></pre></td></tr></table></figure><ul><li>-f  ingore case distinction</li><li>-r revert the order</li><li>-u  list only one line if line data same with each other</li><li>-t  use specified delimeter charater instead of TAB</li><li>-k  order by specified field</li></ul><h2 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat file1 | uniq   [-ic] </span><br></pre></td></tr></table></figure><p>  only print unique lines ,report or omit repeated lines</p><ul><li>-i igonre case  distinction</li><li>-c print line count</li></ul><h2 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat file1 | wc </span><br></pre></td></tr></table></figure><ul><li><p>-c, –bytes<br> print the byte counts</p></li><li><p>-m, –chars<br> print the character counts</p></li><li><p>-l, –lines<br> print the newline counts</p></li></ul>]]></content>
+    
+    
+    <summary type="html"> Linux Command _ cut/grep/sort/uniq/wc</summary>
+    
+    
+    
+    <category term="Linux Command" scheme="http://example.com/categories/Linux-Command/"/>
+    
+    
+    <category term="Linux Command" scheme="http://example.com/tags/Linux-Command/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux Command �� ls</title>
+    <link href="http://example.com/2022/08/19/Linux-Command%E2%80%94%E2%80%94ls/"/>
+    <id>http://example.com/2022/08/19/Linux-Command%E2%80%94%E2%80%94ls/</id>
+    <published>2022-08-19T13:03:44.000Z</published>
+    <updated>2022-08-19T13:10:01.637Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="9-Basic-�ls�-Command-Examples"><a href="#9-Basic-�ls�-Command-Examples" class="headerlink" title="9 Basic �ls� Command Examples"></a>9 Basic �ls� Command Examples</h2><h3 id="ls-a"><a href="#ls-a" class="headerlink" title="ls -a"></a>ls -a</h3><ul><li>list all files or directories including hidden files or directories. </li><li>file begins with . dot symbol can be regarded as a hidden file<h3 id="ls-d"><a href="#ls-d" class="headerlink" title="ls -d"></a>ls -d</h3></li><li>list directories only  ,rather than files inside the directory</li></ul><h3 id="ls-h"><a href="#ls-h" class="headerlink" title="ls -h"></a>ls -h</h3><ul><li>listall file with human readable format on file sizes (e.g. GB ,KB etc)</li><li><ul><li></li></ul></li></ul><h3 id="ls-i"><a href="#ls-i" class="headerlink" title="ls -i"></a>ls -i</h3><ul><li>list all files with their innode number</li></ul><h3 id="ls-l"><a href="#ls-l" class="headerlink" title="ls -l"></a>ls -l</h3><ul><li>list all files with details</li></ul><h3 id="ls-S"><a href="#ls-S" class="headerlink" title="ls -S"></a>ls -S</h3><ul><li>list files sort by file size rather than by name</li></ul><h3 id="ls-t"><a href="#ls-t" class="headerlink" title="ls -t"></a>ls -t</h3><ul><li>list files order by date  rather than name</li></ul><h3 id="ls-r"><a href="#ls-r" class="headerlink" title="ls -r"></a>ls -r</h3><ul><li>list files with a reversal order </li><li>for example. the deafault order is from a to z , </li><li>the order will turn to be z to a using ls -r<h3 id="ls-R"><a href="#ls-R" class="headerlink" title="ls -R"></a>ls -R</h3></li><li>Recursively list Sub-Directories</li></ul><h3 id="Notes"><a href="#Notes" class="headerlink" title="Notes:"></a>Notes:</h3><p>You can use <code>alias ll = &#39;ls -alh --color=auto&#39; </code><br>to DIY the ls command as ll command</p>]]></content>
+    
+    
+    <summary type="html"> Linux Command �� ls</summary>
+    
+    
+    
+    <category term="Linux Command" scheme="http://example.com/categories/Linux-Command/"/>
+    
+    
+    <category term="Linux Command" scheme="http://example.com/tags/Linux-Command/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>what is Elmore delay</title>
+    <link href="http://example.com/2022/08/19/what-is-Elmore-delay/"/>
+    <id>http://example.com/2022/08/19/what-is-Elmore-delay/</id>
+    <published>2022-08-19T13:03:02.000Z</published>
+    <updated>2022-08-19T13:11:16.856Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>Elmore delay is a simple approximation to the delay through an RC network in an electronic system. </li><li>For tree structured networks, find the delay through each segment as the R (electrical resistance) times the downstream C (electrical capacitance). Sum the delays from the root to the sink.</li><li>The Elmore delay analysis model estimates the delay from a source (root) to one of the leaf nodes as the sum of the resistance in the path to the ith node multiplied by the capacitance present at the end of the branch. It provides a simplistic delay analysis that avoids time-consuming numerical integration&#x2F;differential equations of an RC network.</li><li>In other words, the propagation delay from a switching source (root) to an ith branch node is given as the product of the capacitance “Ci” of the node with the sum of the resistance from the source to the node, Ris.</li><li><img src="https://img-blog.csdnimg.cn/5136ce6093014a2cb2e93d377454ffa6.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/371d7e24917047c59d8e0ea86cd7861e.png" alt="在这里插入图片描述"><br>The Elmore delay for Vout is given as tpd &#x3D; R1C1+(R1+ R2)C2</li></ul>]]></content>
+    
+    
+    <summary type="html"> </summary>
+    
+    
+    
+    <category term="EDA" scheme="http://example.com/categories/EDA/"/>
+    
+    
+    <category term="EDA" scheme="http://example.com/tags/EDA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>what is Fan-out</title>
+    <link href="http://example.com/2022/08/19/what-is-Fan-out/"/>
+    <id>http://example.com/2022/08/19/what-is-Fan-out/</id>
+    <published>2022-08-19T13:01:51.000Z</published>
+    <updated>2022-08-19T13:11:10.964Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>the fan-out is the number of gate inputs driven by the output of another single logic gate.</li><li>扇出（fan-out）是一个定义单个逻辑门能够驱动的数字信号输入最大量的专业术语。</li><li>大多数的TTL逻辑门能够为10个其他数字门或驱动器提供信号。所以，一个典型的TTL逻辑门有10个扇出信号。</li><li>In most designs, logic gates are connected to form more complex circuits. While no logic gate input can be fed by more than one output at a time without causing contention,<code> it is common for one output to be connected to several inputs.</code> The technology used to implement logic gates usually allows a certain number of gate inputs to be wired directly together without additional interfacing circuitry. <code>The maximum fan-out of an output measures its load-driving capability: it is the greatest number of inputs of gates of the same type to which the output can be safely connected.</code></li><li>在大多数设计中，逻辑门被连接起来形成更复杂的电路。虽然没有逻辑门输入可以由多个输出同时提供而不引起争用，但一个输出连接到多个输入是常见的。用于实现逻辑门的技术通常允许一定数量的门输入直接连接在一起，而不需要额外的接口电路。输出的最大扇出测量其负载驱动能力:它是输出可以安全连接的同类型门的最大输入数量。</li></ul>]]></content>
+    
+    
+    <summary type="html"> </summary>
+    
+    
+    
+    <category term="EDA" scheme="http://example.com/categories/EDA/"/>
+    
+    
+    <category term="EDA" scheme="http://example.com/tags/EDA/"/>
+    
+  </entry>
   
   <entry>
     <title>Basic Commands in Tcl(Tool Command Language)</title>
