@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="static关键字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++中的static关键字">
+<meta property="og:url" content="http://example.com/2022/05/25/C-%E4%B8%AD%E7%9A%84static%E5%85%B3%E9%94%AE%E5%AD%97/index.html">
+<meta property="og:site_name" content="陈同学的博客">
+<meta property="og:description" content="static关键字">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/70c33764-36a9-4fe2-8df2-e6c7b4ed60f6.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/34d1c2cb-608d-409c-aac9-09f85e753797.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/1c5015be-1be2-4f01-9290-16b6ea09aa73.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/4f1e6aae-89b6-420a-a773-d0f3faf3a65a.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/533d1e4c-a910-4bbb-87d4-78bab569efbe.png">
+<meta property="og:image" content="https://files.mdnice.com/user/1489/213752eb-b8a8-45c7-92cb-36757d783b65.png">
+<meta property="article:published_time" content="2022-05-25T07:15:58.000Z">
+<meta property="article:modified_time" content="2022-05-25T07:17:01.751Z">
+<meta property="article:author" content="Chen">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://files.mdnice.com/user/1489/70c33764-36a9-4fe2-8df2-e6c7b4ed60f6.png">
+
+<link rel="canonical" href="http://example.com/2022/05/25/C-%E4%B8%AD%E7%9A%84static%E5%85%B3%E9%94%AE%E5%AD%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C++中的static关键字 | 陈同学的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="陈同学的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">陈同学的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Blog of Chen</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/25/C-%E4%B8%AD%E7%9A%84static%E5%85%B3%E9%94%AE%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陈同学的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++中的static关键字
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-25 15:15:58 / 修改时间：15:17:01" itemprop="dateCreated datePublished" datetime="2022-05-25T15:15:58+08:00">2022-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">static关键字 </div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <meta name="referrer" content="no-referrer"/>
+
+
+
+<h2 id="静态全局变量"><a href="#静态全局变量" class="headerlink" title="静态全局变量"></a>静态全局变量</h2><h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><ul>
+<li>在全局变量前，加上关键字static，该变量就被定义成为一个静态全局变量。我们先举一个静态全局变量的例子，如下：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">static int n;  //定义静态全局变量</span><br><span class="line"></span><br><span class="line">void fn()</span><br><span class="line">&#123;</span><br><span class="line">    n++;</span><br><span class="line">    cout&lt;&lt;n&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    n = 20;</span><br><span class="line">    cout&lt;&lt;n&lt;&lt;endl;</span><br><span class="line">    fn();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>静态变量都在全局数据区分配内存，包括后面将要提到的静态局部变量。</li>
+<li>未经初始化的静态全局变量会被程序自动初始化为0（自动变量的值是随机的，除非它被显式初始化）；</li>
+</ul>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>全局变量本身就是静态存储方式，<br>静态全局变量当然也是静态存储方式。</p>
+<p>这两者在存储方式上并无不同。</p>
+<p>和全局变量的区别<br>这两者的区别在于非静态全局变量的作用域是整个源程序，<br>当一个源程序由多个原文件组成时，<br>非静态的全局变量在各个源文件中都是有效的。<br>而静态全局变量则限制了其作用域，<br>即只在定义该变量的源文件内有效，<br>在同一源程序的其它源文件中不能使用它。</p>
+<p>如果是全局变量的话<br>你在别的源文件加一个extern<br>就可以使用这个源文件中的全局变量<br>但是如果是静态全局变量就不可以<br>也就是说定义全局变量就可以实现变量在文件中的共享，但定义静态全局变量就不可以 </p>
+<p>这样带来了以下好处：</p>
+<ul>
+<li><p>静态全局变量不能被其它文件所用；静态全局变量在声明它的整个文件都是可见的，而在文件之外是不可见的； </p>
+</li>
+<li><p>其它文件中可以定义相同名字的变量，不会发生冲突；</p>
+</li>
+</ul>
+<h2 id="静态局部变量"><a href="#静态局部变量" class="headerlink" title="静态局部变量"></a>静态局部变量</h2><h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><p>在局部变量前，加上关键字static，该变量就被定义成为一个静态局部变量。<br>我们先举一个静态局部变量的例子，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void fn();</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    fn();</span><br><span class="line">    fn();</span><br><span class="line">    fn();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void fn()</span><br><span class="line">&#123;</span><br><span class="line">    static int n = 10;</span><br><span class="line">    cout&lt;&lt;n&lt;&lt;endl;</span><br><span class="line">    n++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>通常，在函数体内定义了一个变量，每当程序运行到该语句时都会给该局部变量分配栈内存。但随着程序退出函数体，系统就会收回栈内存，局部变量也相应失效。<br>　　但有时候我们需要在两次调用之间对变量的值进行保存。通常的想法是定义一个全局变量来实现。但这样一来，变量已经不再属于函数本身了，不再仅受函数的控制，给程序的维护带来不便。<br>　　静态局部变量正好可以解决这个问题。静态局部变量保存在全局数据区，而不是保存在栈中，每次的值保持到下一次调用，直到下次赋新值。</p>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><p>静态局部变量有以下特点：</p>
+<ul>
+<li>（1）该变量在全局数据区分配内存；</li>
+<li>（2）静态局部变量在程序执行到该对象的声明处时被首次初始化，即以后的函数调用不再进行初始化；</li>
+<li>（3）静态局部变量一般在声明处初始化，如果没有显式初始化，会被程序自动初始化为0；</li>
+<li>（4）它始终驻留在全局数据区，直到程序运行结束。但其作用域为局部作用域，当定义它的函数或语句块结束时，其作用域随之结束；</li>
+<li>（5）初始化时机<br> 静态变量什么时候初始化<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">初始化只有一次，但是可以多次赋值，</span><br><span class="line">在主程序之前，编译器已经为其分配好了内存。</span><br><span class="line">静态局部变量和全局变量一样，数据都存放在全局区域，</span><br><span class="line">所以在主程序之前，编译器已经为其分配好了内存，</span><br><span class="line">但在C和C++中静态局部变量的初始化节点又有点不太一样。</span><br><span class="line">在C中，初始化发生在代码执行之前，编译阶段分配好内存之后，</span><br><span class="line">就会进行初始化，所以我们看到在C语言中</span><br><span class="line">无法使用变量对静态局部变量进行初始化，</span><br><span class="line">在程序运行结束，变量所处的全局内存会被全部回收。</span><br><span class="line"></span><br><span class="line">而在C++中，初始化时在执行相关代码时才会进行初始化，</span><br><span class="line">主要是由于C++引入对象后，</span><br><span class="line">要进行初始化必须执行相应构造函数和析构函数，</span><br><span class="line">在构造函数或析构函数中经常会需要进行某些程序中需要进行的特定操作，</span><br><span class="line">并非简单地分配内存。</span><br><span class="line">所以C++标准定为全局或静态对象是有首次用到时才会进行构造，</span><br><span class="line">并通过atexit()来管理。在程序结束，</span><br><span class="line">按照构造顺序反方向进行逐个析构。</span><br><span class="line">所以在C++中是可以使用变量</span><br><span class="line">对静态局部变量进行初始化的。</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="静态全局函数"><a href="#静态全局函数" class="headerlink" title="静态全局函数"></a>静态全局函数</h2><ul>
+<li>这样的static函数与普通函数的区别是：用static修饰的函数，限定在本源码文件中，不能被本源码文件以外的代码文件调用。而普通的函数，默认是extern的，也就是说它可以被其它代码文件调用。</li>
+</ul>
+<p>　- 在函数的返回类型前加上关键字static，函数就被定义成为静态函数。普通 函数的定义和声明默认情况下是extern的，但静态函数只是在声明他的文件当中可见，不能被其他文件所用。因此定义静态函数有以下好处：<br>　  &lt;1&gt; 其他文件中可以定义相同名字的函数，不会发生冲突。<br>　  　  &lt;2&gt; 静态函数不能被其他文件所用。</p>
+<h2 id="静态成员变量"><a href="#静态成员变量" class="headerlink" title="静态成员变量"></a>静态成员变量</h2><h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p>假设你现在要写一个存款类<br>存款类里面有一个利息的成员变量<br>那么把利息这个成员变量设定为static 有什么作用呢？</p>
+<ul>
+<li><p>一是不管定义多少个存款类对象，利息数据成员都共享分配在全局数据区的内存，所以节省了存储空间。</p>
+</li>
+<li><p>二是一旦利息需要改变时，只要改变一次，则所有存款类对象的利息全改变过来了。</p>
+</li>
+<li><p>三是有一些状态是和类本身相关的而不是和对象相关的 这些状态数据可以用静态成员变量去表达</p>
+</li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ul>
+<li>类内声明</li>
+</ul>
+<p><img src="https://files.mdnice.com/user/1489/70c33764-36a9-4fe2-8df2-e6c7b4ed60f6.png"></p>
+<ul>
+<li>类外初始化</li>
+</ul>
+<p><img src="https://files.mdnice.com/user/1489/34d1c2cb-608d-409c-aac9-09f85e753797.png"></p>
+<ul>
+<li>使用</li>
+</ul>
+<p><img src="https://files.mdnice.com/user/1489/1c5015be-1be2-4f01-9290-16b6ea09aa73.png"></p>
+<p><img src="https://files.mdnice.com/user/1489/4f1e6aae-89b6-420a-a773-d0f3faf3a65a.png"></p>
+<h2 id="静态成员函数"><a href="#静态成员函数" class="headerlink" title="静态成员函数"></a>静态成员函数</h2><h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><p><img src="https://files.mdnice.com/user/1489/533d1e4c-a910-4bbb-87d4-78bab569efbe.png"></p>
+<h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><p><img src="https://files.mdnice.com/user/1489/213752eb-b8a8-45c7-92cb-36757d783b65.png"></p>
+<h2 id="static作用总结"><a href="#static作用总结" class="headerlink" title="static作用总结"></a>static作用总结</h2><h3 id="作用1：隐藏"><a href="#作用1：隐藏" class="headerlink" title="作用1：隐藏"></a>作用1：隐藏</h3><ul>
+<li>1.先来介绍它的第一条也是最重要的一条：隐藏。（static函数，static变量均可）<br>当同时编译多个文件时，所有未加static前缀的全局变量和函数都具有全局可见性。<br>举例来说明。同时编译两个源文件，一个是a.c，另一个是main.c。</li>
+</ul>
+<p>&#x2F;&#x2F;a.c<br>char a &#x3D; ‘A’; &#x2F;&#x2F; global variable<br>void msg()<br>{<br>     printf(“Hello\n”);<br>}</p>
+<p>&#x2F;&#x2F;main.c</p>
+<p>int main()<br>{<br>     extern char a; &#x2F;&#x2F; extern variable must be declared before use<br>     printf(“%c “, a);<br>     (void)msg();<br>     return 0;<br>}</p>
+<p>程序的运行结果是：<br>A Hello</p>
+<p>为什么在a.c中定义的全局变量a和函数msg能在main.c中使用？前面说过，所有未加static前缀的全局变量和函数都具有全局可见性，其它的源文件也能访问。此例中，a是全局变量，msg是函数，并且都没有加static前缀，因此对于另外的源文件main.c是可见的。<br>如果加了static，就会对其它源文件隐藏。例如在a和msg的定义前加上static，main.c就看不到它们了。利用这一特性可以在不同的文件中定义同名函数和同名变量，而不必担心命名冲突。static可以用作函数和变量的前缀，对于函数来讲，static的作用仅限于隐藏.</p>
+<h3 id="2-内容的持久"><a href="#2-内容的持久" class="headerlink" title="2. 内容的持久"></a>2. 内容的持久</h3><ul>
+<li>2.static的第二个作用是保持变量内容的持久。（static变量中的记忆功能和全局生存期）<br>存储在静态数据区的变量会在程序刚开始运行时就完成初始化，也是唯一的一次初始化。共有两种变量存储在静态存储区：全局变量和static变量，只不过和全局变量比起来，static可以控制变量的可见范围，说到底static还是用来隐藏的。虽然这种用法不常见<br>PS：如果作为static局部变量在函数内定义，它的生存期为整个源程序，但是其作用域仍与自动变量相同，只能在定义该变量的函数内使用该变量。退出该函数后， 尽管该变量还继续存在，但不能使用它。</li>
+</ul>
+<p>程序举例：</p>
+<p>＃include &lt;stdio.h&gt;</p>
+<p>int fun(){<br>    static int count &#x3D; 10; &#x2F;&#x2F;在第一次进入这个函数的时候，变量a被初始化为10！并接着自减1，以后每次进入该函数，a<br>    return count–; &#x2F;&#x2F;就不会被再次初始化了，仅进行自减1的操作；在static发明前，要达到同样的功能，则只能使用全局变量：    </p>
+<p>}</p>
+<p>int count &#x3D; 1;</p>
+<p>int main(void)<br>{<br>     printf(“global\t\tlocal static\n”);<br>     for(; count &lt;&#x3D; 10; ++count)<br>               printf(“%d\t\t%d\n”, count, fun());<br>     return 0;<br>}</p>
+<p>程序的运行结果是：<br>global  local static<br>1 10<br>2 9<br>3 8<br>4 7<br>5 6<br>6 5<br>7 4<br>8 3<br>9 2<br>10 1</p>
+<p>—基于以上两点可以得出一个结论：把局部变量改变为静态变量后是改变了它的存储方式即改变了它的生存期。把全局变量改变为静态变量后是改变了它的作用域， 限制了它的使用范围。因此static 这个说明符在不同的地方所起的作用是不同的。</p>
+<h3 id="3-默认初始化为0"><a href="#3-默认初始化为0" class="headerlink" title="3. 默认初始化为0"></a>3. 默认初始化为0</h3><p>其实全局变量也具备这一属性，因为全局变量也存储在静态数据区。在静态数据区，内存中所有的字节默认值都是0x00，某些时候这一特点可以减少程序员的工作量。比如初始化一个稀疏矩阵，我们可以一个一个地把所有元素都置0，然后把不是0的几个元素赋值。如果定义成静态的，就省去了一开始置0的操作。再比如要把一个字符数组当字符串来用，但又觉得每次在字符数组末尾加‘\0’;太麻烦。如果把字符串定义成静态的，就省去了这个麻烦，因为那里本来就是‘\0’;不妨做个小实验验证一下。</p>
+<p>＃include &lt;stdio.h&gt;</p>
+<p>int a;</p>
+<p>int main()<br>{<br>     int i;<br>     static char str[10];<br>     printf(“integer: %d; string: (begin)%s(end)”, a, str);<br>     return 0;<br>}</p>
+<p>程序的运行结果是：<br>integer: 0; string: (begin) (end) </p>
+<p>最后对static的三条作用做一句话总结。首先static的最主要功能是隐藏，其次因为static变量存放在静态存储区，所以它具备持久性和默认值0. </p>
+<h3 id="4-类成员声明static"><a href="#4-类成员声明static" class="headerlink" title="4. 类成员声明static"></a>4. 类成员声明static</h3><p>4.static的第四个作用：C++中的类成员声明static（有些地方与以上作用重叠）<br> 在类中声明static变量或者函数时，初始化时使用作用域运算符来标明它所属类，因此，静态数据成员是类的成员，而不是对象的成员，这样就出现以下作用：<br>(1)类的静态成员函数是属于整个类而非类的对象，所以它没有this指针，这就导致 了它仅能访问类的静态数据和静态成员函数。<br>(2)不能将静态成员函数定义为虚函数。<br>(3)由于静态成员声明于类中，操作于其外，所以对其取地址操作，就多少有些特殊 ，变量地址是指向其数据类型的指针 ，函数地址类型是一个“nonmember函数指针”。<br>(4)由于静态成员函数没有this指针，所以就差不多等同于nonmember函数，结果就 产生了一个意想不到的好处：成为一个callback函数，使得我们得以将C++和C-based X W indow系统结合，同时也成功的应用于线程函数身上。 （这条没遇见过）<br>(5)static并没有增加程序的时空开销，相反她还缩短了子类对父类静态成员的访问 时间，节省了子类的内存空间。<br>(6)静态数据成员在&lt;定义或说明&gt;时前面加关键字static。<br>(7)静态数据成员是静态存储的，所以必须对它进行初始化。 （程序员手动初始化，否则编译时一般不会报错，但是在Link时会报错误）<br>(8)静态成员初始化与一般数据成员初始化不同:<br>初始化在类体外进行，而前面不加static，以免与一般静态变量或对象相混淆；<br>初始化时不加该成员的访问权限控制符private，public等；<br>初始化时使用作用域运算符来标明它所属类；<br>           所以我们得出静态数据成员初始化的格式：<br>&lt;数据类型&gt;&lt;类名&gt;::&lt;静态数据成员名&gt;&#x3D;&lt;值&gt;<br>(9)为了防止父类的影响，可以在子类定义一个与父类相同的静态变量，以屏蔽父类的影响。这里有一点需要注意：我们说静态成员为父类和子类共享，但我们有重复定义了静态成员，这会不会引起错误呢？不会，我们的编译器采用了一种绝妙的手法：name-mangling 用以生成唯一的标志。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/25/C-%E4%B8%AD%E7%9A%84extern%E5%85%B3%E9%94%AE%E5%AD%97/" rel="prev" title="C++中的extern关键字">
+      <i class="fa fa-chevron-left"></i> C++中的extern关键字
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/05/29/C-%E4%B8%AD%E7%9A%84const%E5%85%B3%E9%94%AE%E5%AD%97/" rel="next" title="C++中的const关键字">
+      C++中的const关键字 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">静态全局变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">1.1.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">1.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%BA%E5%88%AB"><span class="nav-number">1.3.</span> <span class="nav-text">区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">静态局部变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B-1"><span class="nav-number">2.1.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E7%82%B9-1"><span class="nav-number">2.3.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">静态全局函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="nav-number">4.</span> <span class="nav-text">静态成员变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-1"><span class="nav-number">4.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">4.2.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">静态成员函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-1"><span class="nav-number">5.1.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E7%82%B9-2"><span class="nav-number">5.2.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static%E4%BD%9C%E7%94%A8%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">static作用总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E7%94%A81%EF%BC%9A%E9%9A%90%E8%97%8F"><span class="nav-number">6.1.</span> <span class="nav-text">作用1：隐藏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%86%85%E5%AE%B9%E7%9A%84%E6%8C%81%E4%B9%85"><span class="nav-number">6.2.</span> <span class="nav-text">2. 内容的持久</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%BB%98%E8%AE%A4%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%BA0"><span class="nav-number">6.3.</span> <span class="nav-text">3. 默认初始化为0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%B1%BB%E6%88%90%E5%91%98%E5%A3%B0%E6%98%8Estatic"><span class="nav-number">6.4.</span> <span class="nav-text">4. 类成员声明static</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
