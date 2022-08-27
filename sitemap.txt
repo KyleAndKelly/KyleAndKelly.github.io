@@ -1,3 +1,4 @@
+http://example.com/2022/08/22/Leetcode-problems-Solutions-Note/
 http://example.com/2022/08/19/what-is-Elmore-delay/
 http://example.com/2022/08/19/what-is-Fan-out/
 http://example.com/2022/08/19/Linux-Command%E2%80%94%E2%80%94ls/
@@ -25,9 +26,11 @@ http://example.com/tags/Linux%E5%91%BD%E4%BB%A4/
 http://example.com/tags/TCL/
 http://example.com/tags/Linux-Command/
 http://example.com/tags/EDA/
+http://example.com/tags/Leetcode/
 http://example.com/categories/C/
 http://example.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/
 http://example.com/categories/Linux%E5%91%BD%E4%BB%A4/
 http://example.com/categories/TCL/
 http://example.com/categories/Linux-Command/
 http://example.com/categories/EDA/
+http://example.com/categories/Leetcode/
