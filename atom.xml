@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Blog of Chen</title>
+  <title>Kyle Chen&#39;s Blog</title>
   
-  <subtitle>陈同学的博客</subtitle>
+  
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
@@ -10,7 +10,7 @@
   <id>http://example.com/</id>
   
   <author>
-    <name>Chen</name>
+    <name>KyleChen 陈同学</name>
     
   </author>
   
