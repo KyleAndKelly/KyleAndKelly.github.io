@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":400,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta property="og:type" content="article">
+<meta property="og:title" content="【经验总结】如何使用tcl进行文件IO">
+<meta property="og:url" content="http://example.com/2023/05/29/%E3%80%90%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E3%80%91%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8tcl%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6IO/index.html">
+<meta property="og:site_name" content="Kyle Chen&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/fe56334d7c5c412686895a2feee9dad6.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1d408072918d48b6bbc3701711c240b2.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/c19b7655d40c4b948415f453193d1d2f.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/736f82099e014d678e50446ca2f6fbb9.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/3a6d83239ef940fc89ddf91a399bf5bd.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/5b10da8ff6564c7bb6b5f7a0777f4e22.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/3280353097d9481689a566c206cebeb5.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/fa769e7c19ff4c57a18531b17471cde4.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/3ab324f9f2464a22a5d7af9593391e32.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/4509d354744349eab4812c15aa5eb34a.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/b0bbe0c4a68d4c069660c280f51b5c71.png">
+<meta property="article:published_time" content="2023-05-28T16:36:59.000Z">
+<meta property="article:modified_time" content="2023-06-15T12:48:49.144Z">
+<meta property="article:author" content="陈同学">
+<meta property="article:tag" content="经验总结">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/fe56334d7c5c412686895a2feee9dad6.png">
+
+<link rel="canonical" href="http://example.com/2023/05/29/%E3%80%90%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E3%80%91%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8tcl%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6IO/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>【经验总结】如何使用tcl进行文件IO | Kyle Chen's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Kyle Chen's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Kyle Chen's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Action speaks louder than Words</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/29/%E3%80%90%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E3%80%91%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8tcl%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6IO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpg">
+      <meta itemprop="name" content="陈同学">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kyle Chen's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【经验总结】如何使用tcl进行文件IO
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-05-29 00:36:59" itemprop="dateCreated datePublished" datetime="2023-05-29T00:36:59+08:00">2023-05-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-06-15 20:48:49" itemprop="dateModified" datetime="2023-06-15T20:48:49+08:00">2023-06-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">经验总结</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description"> </div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <meta name="referrer" content="no-referrer"/>
+
+<h2 id="open和close命令"><a href="#open和close命令" class="headerlink" title="open和close命令"></a>open和close命令</h2><ul>
+<li><p>open用于打开一个文件并返回一个文件标识符，该标识符可以用于后续的读写操作。close用于关闭一个打开的文件。</p>
+</li>
+<li><p>在Tcl中，open和close命令的用法如下：</p>
+</li>
+</ul>
+<figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> fileId [<span class="keyword">open</span> <span class="keyword">filename</span> ?access? ?permissions?]</span><br><span class="line"><span class="keyword">close</span> fileId</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中，filename是要打开的文件名，access是访问模式，可选参数，默认为只读模式（”r”）。permissions是文件的权限，可选参数，默认为0666。<br><img src="https://img-blog.csdnimg.cn/fe56334d7c5c412686895a2feee9dad6.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/1d408072918d48b6bbc3701711c240b2.png" alt="在这里插入图片描述"></li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/c19b7655d40c4b948415f453193d1d2f.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/736f82099e014d678e50446ca2f6fbb9.png" alt="在这里插入图片描述"></p>
+<h2 id="gets和puts命令"><a href="#gets和puts命令" class="headerlink" title="gets和puts命令"></a>gets和puts命令</h2><ul>
+<li><p>gets用于逐行读取一个文件或一个管道的内容。puts用于将字符串、变量或文件输出到控制台或指定文件中。</p>
+</li>
+<li><p>在Tcl中，gets和puts命令的用法如下：</p>
+</li>
+</ul>
+<figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">gets</span> fileId ?<span class="keyword">variable</span>?</span><br><span class="line"><span class="keyword">puts</span> <span class="keyword">string</span> ?channelId?</span><br><span class="line"><span class="keyword">puts</span> -nonewline <span class="keyword">string</span> ?channelId?</span><br></pre></td></tr></table></figure>
+<p>其中，fileId是文件标识符，variable是存储读取结果的变量名。string是要输出的字符串或变量值，channelId是要输出到的文件标识符，默认为标准输出。<br><img src="https://img-blog.csdnimg.cn/3a6d83239ef940fc89ddf91a399bf5bd.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/5b10da8ff6564c7bb6b5f7a0777f4e22.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/3280353097d9481689a566c206cebeb5.png" alt="在这里插入图片描述"></p>
+<h2 id="read和write命令"><a href="#read和write命令" class="headerlink" title="read和write命令"></a>read和write命令</h2><ul>
+<li><p>read用于从一个打开的文件或一个管道读取指定字节数的数据。write用于将指定的数据写入一段已打开的文件或管道。</p>
+</li>
+<li><p>在Tcl中，read和write命令的用法如下：</p>
+</li>
+</ul>
+<figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">read</span> fileId ?count?</span><br><span class="line">write fileId <span class="keyword">string</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>其中，fileId是文件标识符，count是要读取的字节数。string是要写入的字符串或变量值。<br><img src="https://img-blog.csdnimg.cn/fa769e7c19ff4c57a18531b17471cde4.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/3ab324f9f2464a22a5d7af9593391e32.png" alt="在这里插入图片描述"><h2 id="eof命令"><a href="#eof命令" class="headerlink" title="eof命令"></a>eof命令</h2><img src="https://img-blog.csdnimg.cn/4509d354744349eab4812c15aa5eb34a.png" alt="在这里插入图片描述"><h2 id="flush命令"><a href="#flush命令" class="headerlink" title="flush命令"></a>flush命令</h2><img src="https://img-blog.csdnimg.cn/b0bbe0c4a68d4c069660c280f51b5c71.png" alt="在这里插入图片描述"></li>
+</ul>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><ul>
+<li>以下是一个使用这些命令进行文件I&#x2F;O的示例代码：</li>
+</ul>
+<figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开文件并写入一段文本</span></span><br><span class="line"><span class="keyword">set</span> fileId [<span class="keyword">open</span> <span class="string">&quot;test.txt&quot;</span> <span class="string">&quot;w&quot;</span>]</span><br><span class="line"><span class="keyword">puts</span> <span class="variable">$fileId</span> <span class="string">&quot;Hello, world!&quot;</span></span><br><span class="line"><span class="keyword">close</span> <span class="variable">$fileId</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取文件内容并输出到控制台</span></span><br><span class="line"><span class="keyword">set</span> fileId [<span class="keyword">open</span> <span class="string">&quot;test.txt&quot;</span> <span class="string">&quot;r&quot;</span>]</span><br><span class="line"><span class="keyword">while</span> &#123;[<span class="keyword">gets</span> <span class="variable">$fileId</span> line] != <span class="number">-1</span>&#125; &#123;</span><br><span class="line">    <span class="keyword">puts</span> <span class="variable">$line</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">close</span> <span class="variable">$fileId</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制二进制文件</span></span><br><span class="line"><span class="keyword">set</span> inFile [<span class="keyword">open</span> <span class="string">&quot;in.bin&quot;</span> rb]</span><br><span class="line"><span class="keyword">set</span> outFile [<span class="keyword">open</span> <span class="string">&quot;out.bin&quot;</span> wb]</span><br><span class="line"><span class="keyword">set</span> buf [<span class="keyword">read</span> <span class="variable">$inFile</span> <span class="number">1024</span>]</span><br><span class="line">write <span class="variable">$outFile</span> <span class="variable">$buf</span></span><br><span class="line"><span class="keyword">close</span> <span class="variable">$inFile</span></span><br><span class="line"><span class="keyword">close</span> <span class="variable">$outFile</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" rel="tag"># 经验总结</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/05/29/%E3%80%90%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E3%80%91%E5%85%B3%E4%BA%8E%E9%AB%98%E7%B2%BE%E5%BA%A6%E6%B5%AE%E7%82%B9%E6%95%B0%E8%AF%AF%E5%B7%AE%E9%97%AE%E9%A2%98%E7%9A%84%E6%80%BB%E7%BB%93/" rel="prev" title="【经验总结】关于浮点数double/float精度误差问题的总结">
+      <i class="fa fa-chevron-left"></i> 【经验总结】关于浮点数double/float精度误差问题的总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/05/31/%E3%80%90C-%E3%80%91C-%E4%B8%AD%E7%9A%84boost%E5%BA%93%E2%80%94String-Algorithm-Library/" rel="next" title="【C++】C++中的boost库—String_Algorithm_Library">
+      【C++】C++中的boost库—String_Algorithm_Library <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#open%E5%92%8Cclose%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">open和close命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gets%E5%92%8Cputs%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">gets和puts命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#read%E5%92%8Cwrite%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">read和write命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eof%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">eof命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flush%E5%91%BD%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">flush命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">6.</span> <span class="nav-text">实例</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="陈同学"
+      src="/images/1.jpg">
+  <p class="site-author-name" itemprop="name">陈同学</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/kyleandkelly" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;kyleandkelly" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/2431173627ccc@gmail.com" title="E-Mail → 2431173627ccc@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/475843583" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;475843583" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i>Bilibili</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈同学</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
