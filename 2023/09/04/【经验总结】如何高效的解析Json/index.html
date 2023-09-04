@@ -20,20 +20,26 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":400,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="原型模式C++实现">
-<meta property="og:type" content="article">
-<meta property="og:title" content="原型模式C++实现">
-<meta property="og:url" content="http://example.com/2022/05/21/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8FC-%E5%AE%9E%E7%8E%B0/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="【经验总结】如何高效的解析Json">
+<meta property="og:url" content="http://example.com/2023/09/04/%E3%80%90%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E3%80%91%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E7%9A%84%E8%A7%A3%E6%9E%90Json/index.html">
 <meta property="og:site_name" content="Kyle Chen&#39;s Blog">
-<meta property="og:description" content="原型模式C++实现">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-20T23:47:46.000Z">
-<meta property="article:modified_time" content="2022-05-20T23:50:45.814Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/9882335399854759becf5db381472072.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/a6c961b0d5b142a88f5a428123b18051.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/e193a48ce5874e54a1d24e6fa5db40c1.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/7a1848e289124d48a41f3a688c983c00.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/0446677e9727414f97329206f7c0d82b.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/33c0f389c981460290498c27a6daf9be.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20792bed7e74453182c41954f3de9bd2.png">
+<meta property="article:published_time" content="2023-09-03T16:36:59.000Z">
+<meta property="article:modified_time" content="2023-09-04T14:30:32.141Z">
 <meta property="article:author" content="陈同学">
-<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="经验总结">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/9882335399854759becf5db381472072.png">
 
-<link rel="canonical" href="http://example.com/2022/05/21/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8FC-%E5%AE%9E%E7%8E%B0/">
+<link rel="canonical" href="http://example.com/2023/09/04/%E3%80%90%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E3%80%91%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E7%9A%84%E8%A7%A3%E6%9E%90Json/">
 
 
 <script id="page-configurations">
@@ -46,7 +52,7 @@
   };
 </script>
 
-  <title>原型模式C++实现 | Kyle Chen's Blog</title>
+  <title>【经验总结】如何高效的解析Json | Kyle Chen's Blog</title>
   
 
 
@@ -153,7 +159,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/21/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8FC-%E5%AE%9E%E7%8E%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/04/%E3%80%90%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93%E3%80%91%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E7%9A%84%E8%A7%A3%E6%9E%90Json/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/1.jpg">
@@ -166,7 +172,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          原型模式C++实现
+          【经验总结】如何高效的解析Json
         </h1>
 
         <div class="post-meta">
@@ -177,7 +183,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-05-21 07:47:46 / 修改时间：07:50:45" itemprop="dateCreated datePublished" datetime="2022-05-21T07:47:46+08:00">2022-05-21</time>
+              <time title="创建时间：2023-09-04 00:36:59 / 修改时间：22:30:32" itemprop="dateCreated datePublished" datetime="2023-09-04T00:36:59+08:00">2023-09-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -185,12 +191,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
+                  <a href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">经验总结</span></a>
                 </span>
             </span>
 
           
-            <div class="post-description"> 原型模式C++实现</div>
+            <div class="post-description"> </div>
 
         </div>
       </header>
@@ -201,10 +207,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/huangyimo/article/details/80390001">原型模式有什么用？</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chenxun_2010/article/details/48327231">原型模式怎么实现?</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Resume</span>&#123;</span><br><span class="line">    <span class="keyword">protected</span>:</span><br><span class="line">        <span class="type">char</span>* name;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> Resume* <span class="title">clone</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteResume</span>:<span class="keyword">public</span> Resume&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">ConcreteResume</span>(<span class="type">char</span>* str)&#123;</span><br><span class="line">             name = <span class="keyword">new</span> <span class="type">char</span>[<span class="built_in">strlen</span>(str)+<span class="number">1</span>];</span><br><span class="line">             <span class="built_in">strcpy</span>(name,str);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">ConcreteResume</span>(<span class="type">const</span> ConcreteResume&amp; r1)&#123;</span><br><span class="line">            name = <span class="keyword">new</span> <span class="type">char</span>[<span class="built_in">strlen</span>(r1.name)+<span class="number">1</span>];</span><br><span class="line">            <span class="built_in">strcpy</span>(name,r1.name);</span><br><span class="line">        &#125;</span><br><span class="line">        ConcreteResume&amp; <span class="keyword">operator</span>&amp;=(<span class="type">const</span> ConcreteResume&amp; r1)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span> == &amp;r1)&#123;<span class="keyword">return</span> *<span class="keyword">this</span>;&#125;</span><br><span class="line">            <span class="keyword">delete</span>[] name;</span><br><span class="line">            name = <span class="keyword">new</span> <span class="type">char</span>[<span class="built_in">strlen</span>(r1.name)+<span class="number">1</span>];</span><br><span class="line">            <span class="built_in">strcpy</span>(name,r1.name);</span><br><span class="line">            <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function">ConcreteResume* <span class="title">clone</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">ConcreteResume</span>(*<span class="keyword">this</span>);</span><br><span class="line">        &#125; </span><br><span class="line">       <span class="comment">//debug</span></span><br><span class="line">       <span class="function"><span class="type">void</span> <span class="title">PinrtInfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">           <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">strlen</span>(name);i++)&#123;</span><br><span class="line">                cout&lt;&lt;name[i]&lt;&lt;endl;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="type">char</span> str[]  = <span class="string">&quot;happy&quot;</span>;</span><br><span class="line">    <span class="function">ConcreteResume <span class="title">r1</span><span class="params">(str)</span></span>;</span><br><span class="line">    <span class="function">ConcreteResume <span class="title">r2</span><span class="params">(r1)</span></span>;</span><br><span class="line">    <span class="type">char</span> str1[]  = <span class="string">&quot;helloworld&quot;</span>;</span><br><span class="line">    <span class="function">ConcreteResume <span class="title">r3</span><span class="params">(str1)</span></span>;</span><br><span class="line">    r3 = r1;</span><br><span class="line">    <span class="comment">// r3.PinrtInfo();</span></span><br><span class="line">    ConcreteResume *r4 = r3.<span class="built_in">clone</span>();</span><br><span class="line">    r4-&gt;<span class="built_in">PinrtInfo</span>();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <meta name="referrer" content="no-referrer"/>
 
+<h2 id="Json介绍"><a href="#Json介绍" class="headerlink" title="Json介绍"></a>Json介绍</h2><ul>
+<li>Json是一种数据格式，广泛应用在需要数据交互的场景</li>
+<li>Json由键值对组成</li>
+<li>每一个键值对的key是字符串类型</li>
+<li>每一个键值对的value是值类型(boo1值数字值字符串值)Array类型object类型</li>
+<li>Json灵活性他可以不断嵌套，数组的每个元素还可以是数组或者键值对键值对的每个值还可<br>以是数组或者键值对<br><img src="https://img-blog.csdnimg.cn/9882335399854759becf5db381472072.png" alt="在这里插入图片描述"></li>
+</ul>
+<h2 id="Boost-PropertyTree介绍"><a href="#Boost-PropertyTree介绍" class="headerlink" title="Boost.PropertyTree介绍"></a>Boost.PropertyTree介绍</h2><h3 id="1-ptree结构体"><a href="#1-ptree结构体" class="headerlink" title="1 ptree结构体"></a>1 ptree结构体</h3><p><img src="https://img-blog.csdnimg.cn/a6c961b0d5b142a88f5a428123b18051.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/e193a48ce5874e54a1d24e6fa5db40c1.png" alt="在这里插入图片描述"></p>
+<h3 id="2-读取json数据API"><a href="#2-读取json数据API" class="headerlink" title="2.读取json数据API"></a>2.读取json数据API</h3><p><img src="https://img-blog.csdnimg.cn/7a1848e289124d48a41f3a688c983c00.png" alt="在这里插入图片描述"></p>
+<h3 id="3-获取子节点API"><a href="#3-获取子节点API" class="headerlink" title="3.获取子节点API"></a>3.获取子节点API</h3><p><img src="https://img-blog.csdnimg.cn/0446677e9727414f97329206f7c0d82b.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/33c0f389c981460290498c27a6daf9be.png" alt="在这里插入图片描述"></p>
+<h3 id="4-数组遍历API"><a href="#4-数组遍历API" class="headerlink" title="4.数组遍历API"></a>4.数组遍历API</h3><p><img src="https://img-blog.csdnimg.cn/20792bed7e74453182c41954f3de9bd2.png" alt="在这里插入图片描述"></p>
+<h3 id="5-其他API"><a href="#5-其他API" class="headerlink" title="5.其他API"></a>5.其他API</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">empty(): 当前节点是否含有子节点。比如当一个节点已经是叶子节点的时候返回false</span><br><span class="line">find(const key_type &amp;key) 返回指向该节点的迭代器 ，或者property_tree::ptree::not_found。</span><br><span class="line">count(const key_type &amp;key): 返回指定名称路径的节点的子节点的数目。</span><br></pre></td></tr></table></figure>
+<h3 id="6-注意点"><a href="#6-注意点" class="headerlink" title="6.注意点"></a>6.注意点</h3><p>&#96;&#96;&#96;</p>
+<ol>
+<li>这个库默认不是线程安全的</li>
+</ol>
+<p>如果直接在多线程的程序中使用Boost解析JSON，<br>可能会在奇怪的时候报段错误。<br>我们如果需要它支持线程安全，<br>就必须加入一个宏#define BOOST_SPIRIT_THREADSAFE，</p>
+<ol start="2">
+<li>try…catch<br>if ( root_node.get_child_optional( “name” ) ) {<br>  try {<br>     root_node.get_child(“name”)<br>  } catch (…) {<br>  …<br>  }<br>}</li>
+</ol>
 
     </div>
 
@@ -214,7 +238,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
+              <a href="/tags/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" rel="tag"># 经验总结</a>
           </div>
 
         
@@ -223,13 +247,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/20/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E6%97%B6%E7%9A%84%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/" rel="prev" title="系统设计时的常用算法">
-      <i class="fa fa-chevron-left"></i> 系统设计时的常用算法
+    <a href="/2023/06/05/%E3%80%90C-%E3%80%91C-%E4%B8%AD%E7%9A%84IO%E7%B1%BB%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E4%B8%8A%E7%AF%87/" rel="prev" title="【C++】C++中的IO类总结——上篇">
+      <i class="fa fa-chevron-left"></i> 【C++】C++中的IO类总结——上篇
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/05/24/SSH%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="SSH的原理及常用命令">
-      SSH的原理及常用命令 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -288,6 +309,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Json%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">Json介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boost-PropertyTree%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">Boost.PropertyTree介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ptree%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">2.1.</span> <span class="nav-text">1 ptree结构体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%AF%BB%E5%8F%96json%E6%95%B0%E6%8D%AEAPI"><span class="nav-number">2.2.</span> <span class="nav-text">2.读取json数据API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%8E%B7%E5%8F%96%E5%AD%90%E8%8A%82%E7%82%B9API"><span class="nav-number">2.3.</span> <span class="nav-text">3.获取子节点API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86API"><span class="nav-number">2.4.</span> <span class="nav-text">4.数组遍历API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%85%B6%E4%BB%96API"><span class="nav-number">2.5.</span> <span class="nav-text">5.其他API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">2.6.</span> <span class="nav-text">6.注意点</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
