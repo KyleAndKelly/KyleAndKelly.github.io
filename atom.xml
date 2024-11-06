@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-09-04T14:30:32.141Z</updated>
+  <updated>2024-11-06T12:56:26.547Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AJAX に基づくログインページ01ー AJAXの簡単な使い方</title>
+    <link href="http://example.com/2024/11/06/AJAX-%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%8F%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B801%E3%83%BC-AJAX%E3%81%AE%E7%B0%A1%E5%8D%98%E3%81%AA%E4%BD%BF%E3%81%84%E6%96%B9/"/>
+    <id>http://example.com/2024/11/06/AJAX-%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%8F%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B801%E3%83%BC-AJAX%E3%81%AE%E7%B0%A1%E5%8D%98%E3%81%AA%E4%BD%BF%E3%81%84%E6%96%B9/</id>
+    <published>2024-11-05T16:36:59.000Z</published>
+    <updated>2024-11-06T12:56:26.547Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> username = <span class="string">&quot;randomuser&quot;</span></span><br><span class="line"><span class="keyword">const</span> password = <span class="string">&quot;123456&quot;</span></span><br><span class="line"><span class="keyword">const</span> p_element = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.my_p_1&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="title function_">axios</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;http://hmajax.itheima.net/api/login&#x27;</span>,</span><br><span class="line">    <span class="attr">method</span>:<span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>:&#123;</span><br><span class="line">        username,</span><br><span class="line">        password</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(result.<span class="property">data</span>.<span class="property">message</span>)</span><br><span class="line">    <span class="keyword">if</span>(p_element)&#123;</span><br><span class="line">        p_element.<span class="property">innerHTML</span> = result.<span class="property">data</span>.<span class="property">message</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">error</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error.<span class="property">response</span>.<span class="property">data</span>.<span class="property">message</span>)</span><br><span class="line">    <span class="keyword">if</span>(p_element)&#123;</span><br><span class="line">        p_element.<span class="property">innerHTML</span> = error.<span class="property">response</span>.<span class="property">data</span>.<span class="property">message</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;) </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html"> </summary>
+    
+    
+    
+    <category term="Notes" scheme="http://example.com/categories/Notes/"/>
+    
+    
+    <category term="Notes" scheme="http://example.com/tags/Notes/"/>
+    
+  </entry>
   
   <entry>
     <title>【经验总结】如何高效的解析Json</title>
@@ -412,27 +433,6 @@
     
     
     <category term="设计模式" scheme="http://example.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>系统设计时的常用算法</title>
-    <link href="http://example.com/2022/05/20/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E6%97%B6%E7%9A%84%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/"/>
-    <id>http://example.com/2022/05/20/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E6%97%B6%E7%9A%84%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/</id>
-    <published>2022-05-20T03:46:56.000Z</published>
-    <updated>2022-12-09T06:33:06.735Z</updated>
-    
-    <content type="html"><![CDATA[<meta name="referrer" content="no-referrer"/>]]></content>
-    
-    
-    <summary type="html">系统设计时的常用算法 </summary>
-    
-    
-    
-    <category term="系统设计" scheme="http://example.com/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
-    
-    
-    <category term="系统设计" scheme="http://example.com/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
