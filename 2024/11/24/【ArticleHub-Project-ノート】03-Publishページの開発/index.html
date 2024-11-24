@@ -20,33 +20,23 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":400,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="SSH的原理及常用命令">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SSH的原理及常用命令">
-<meta property="og:url" content="http://example.com/2022/05/24/SSH%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="【ArticleHub Project ノート】03.Publishページの開発">
+<meta property="og:url" content="http://example.com/2024/11/24/%E3%80%90ArticleHub-Project-%E3%83%8E%E3%83%BC%E3%83%88%E3%80%9103-Publish%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E9%96%8B%E7%99%BA/index.html">
 <meta property="og:site_name" content="Kyle Chen&#39;s Blog">
-<meta property="og:description" content="SSH的原理及常用命令">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://files.mdnice.com/user/1489/55e5275f-20b0-4e30-b3d1-cce30d62f991.png">
-<meta property="og:image" content="https://files.mdnice.com/user/1489/20d1c527-81d7-46a9-a59c-30311d225a56.png">
-<meta property="og:image" content="https://files.mdnice.com/user/1489/20a4b7b5-a888-4502-bd09-d5f9c8e98d9c.png">
-<meta property="og:image" content="https://files.mdnice.com/user/1489/039079ca-b2f9-4b7d-91c5-fc5a3a48ab9e.png">
-<meta property="og:image" content="https://files.mdnice.com/user/1489/76ed9dfe-103d-481d-b967-26d9a002f8d1.png">
-<meta property="og:image" content="https://files.mdnice.com/user/1489/aab013b5-dcfd-4e5b-888e-e5d267c93af7.png">
-<meta property="og:image" content="https://files.mdnice.com/user/1489/237873e0-cfe1-487b-8ee3-9dad77e29941.png">
-<meta property="og:image" content="https://files.mdnice.com/user/1489/b63bd863-def7-4054-a836-c6c90537e0ab.png">
-<meta property="og:image" content="https://files.mdnice.com/user/1489/29e92daf-1ec4-4f50-92b2-e8a555a9e3bc.png">
-<meta property="og:image" content="https://files.mdnice.com/user/1489/f044672e-b952-49f1-801d-fa4cebafe9ab.png">
-<meta property="og:image" content="https://files.mdnice.com/user/1489/c0101bb6-c185-440f-a931-c4a3ed713bfa.png">
-<meta property="og:image" content="https://files.mdnice.com/user/1489/cff768f1-19f0-4999-9179-746b6d5c293a.png">
-<meta property="article:published_time" content="2022-05-24T04:27:47.000Z">
-<meta property="article:modified_time" content="2022-05-24T04:33:27.849Z">
+<meta property="og:image" content="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/ce20b5cc-aa63-cab1-7bf3-1f72d587a0f2.png">
+<meta property="og:image" content="c:/Users/Kyle/AppData/Roaming/Typora/typora-user-images/image-20241124112044365.png">
+<meta property="og:image" content="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/4c20ed36-855b-1757-823a-41095255f3a6.png">
+<meta property="og:image" content="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/5505199f-5b31-0527-446c-f6aa767acdf0.png">
+<meta property="article:published_time" content="2024-11-23T16:36:59.000Z">
+<meta property="article:modified_time" content="2024-11-24T03:07:54.981Z">
 <meta property="article:author" content="陈同学">
-<meta property="article:tag" content="Linux命令">
+<meta property="article:tag" content="Notes">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://files.mdnice.com/user/1489/55e5275f-20b0-4e30-b3d1-cce30d62f991.png">
+<meta name="twitter:image" content="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/ce20b5cc-aa63-cab1-7bf3-1f72d587a0f2.png">
 
-<link rel="canonical" href="http://example.com/2022/05/24/SSH%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+<link rel="canonical" href="http://example.com/2024/11/24/%E3%80%90ArticleHub-Project-%E3%83%8E%E3%83%BC%E3%83%88%E3%80%9103-Publish%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E9%96%8B%E7%99%BA/">
 
 
 <script id="page-configurations">
@@ -59,7 +49,7 @@
   };
 </script>
 
-  <title>SSH的原理及常用命令 | Kyle Chen's Blog</title>
+  <title>【ArticleHub Project ノート】03.Publishページの開発 | Kyle Chen's Blog</title>
   
 
 
@@ -166,7 +156,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/24/SSH%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/24/%E3%80%90ArticleHub-Project-%E3%83%8E%E3%83%BC%E3%83%88%E3%80%9103-Publish%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E9%96%8B%E7%99%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/1.jpg">
@@ -179,7 +169,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          SSH的原理及常用命令
+          【ArticleHub Project ノート】03.Publishページの開発
         </h1>
 
         <div class="post-meta">
@@ -190,7 +180,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-05-24 12:27:47 / 修改时间：12:33:27" itemprop="dateCreated datePublished" datetime="2022-05-24T12:27:47+08:00">2022-05-24</time>
+              <time title="创建时间：2024-11-24 00:36:59 / 修改时间：11:07:54" itemprop="dateCreated datePublished" datetime="2024-11-24T00:36:59+08:00">2024-11-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -198,12 +188,12 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">Linux命令</span></a>
+                  <a href="/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a>
                 </span>
             </span>
 
           
-            <div class="post-description">SSH的原理及常用命令 </div>
+            <div class="post-description"> </div>
 
         </div>
       </header>
@@ -214,37 +204,45 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <meta name="referrer" content="no-referrer"/>
-
-<h2 id="SSH的含义"><a href="#SSH的含义" class="headerlink" title="SSH的含义"></a>SSH的含义</h2><ul>
-<li><p>SSH是一个应用层协议，专为远程登录会话和其他网络服务提供安全性的保障，防止信息泄露问题。</p>
-</li>
-<li><p>ssh服务端由2部分组成： openssh(提供ssh服务)    openssl(提供加密的程序)</p>
-</li>
-<li><p>ssh的客户端可以用 XShell，XManager、SecureCRT，Putty、Mobaxterm  等工具进行远程连接、登录</p>
-</li>
-</ul>
-<p><img src="https://files.mdnice.com/user/1489/55e5275f-20b0-4e30-b3d1-cce30d62f991.png"></p>
-<h2 id="SSH的历史"><a href="#SSH的历史" class="headerlink" title="SSH的历史"></a>SSH的历史</h2><ul>
-<li>1995年，芬兰学者Tatu Ylonen设计了SSH协议，</li>
-<li>SSH 为 Secure SHell 的缩写，由 IETF 的网络小组（Network Working Group）所制定；</li>
-<li>SSH最初是UNIX系统上的一个程序，后来又迅速扩展到其他操作平台。SSH在正确使用时可弥补网络中的漏洞。SSH客户端适用于多种平台。几乎所有UNIX平台—包括 HP-UX、Linux、Unix、AIX、Solaris、Digital UNIX、Irix，以及其他平台，都可运行SSH。</li>
-<li>　　SSH只是一种协议，存在多种实现，既有商业实现，也有开源实现。本文针对的实现是OpenSSH，它是自由软件，应用非常广泛。</li>
-</ul>
-<h2 id="SSH的原理"><a href="#SSH的原理" class="headerlink" title="SSH的原理"></a>SSH的原理</h2><p>SSH(远程连接工具)连接原理：ssh服务是一个守护进程(demon)，系统后台监听客户端的连接，ssh服务端的进程名为sshd，负责实时监听客户端的请求(IP 22默认端口)，包括公共秘钥等交换等信息。</p>
-<p>服务器启动的时候自己产生一个密钥(768bit公钥)，本地的ssh客户端发送连接请求到ssh服务器，服务器检查连接点客户端发送的数据和IP地址，确认合法后，ssh服务器会发送密钥(768bits)给客户端，此时客户端将本地私钥(256bit)和服务器的公钥(768bit)结合成密钥对key(1024bit)，发回给服务器端，建立连接通过key-pair数据传输。</p>
-<h4 id="基于口令的认证-密码登录"><a href="#基于口令的认证-密码登录" class="headerlink" title="基于口令的认证-密码登录"></a>基于口令的认证-密码登录</h4><p><img src="https://files.mdnice.com/user/1489/20d1c527-81d7-46a9-a59c-30311d225a56.png"></p>
-<p><img src="https://files.mdnice.com/user/1489/20a4b7b5-a888-4502-bd09-d5f9c8e98d9c.png"></p>
-<p><img src="https://files.mdnice.com/user/1489/039079ca-b2f9-4b7d-91c5-fc5a3a48ab9e.png"></p>
-<h4 id="基于公钥的认证-免密码登录"><a href="#基于公钥的认证-免密码登录" class="headerlink" title="基于公钥的认证-免密码登录"></a>基于公钥的认证-免密码登录</h4><p><img src="https://files.mdnice.com/user/1489/76ed9dfe-103d-481d-b967-26d9a002f8d1.png"></p>
-<p><img src="https://files.mdnice.com/user/1489/aab013b5-dcfd-4e5b-888e-e5d267c93af7.png"></p>
-<p><img src="https://files.mdnice.com/user/1489/237873e0-cfe1-487b-8ee3-9dad77e29941.png"></p>
-<h2 id="SSH的有关命令"><a href="#SSH的有关命令" class="headerlink" title="SSH的有关命令"></a>SSH的有关命令</h2><h3 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h3><p><img src="https://files.mdnice.com/user/1489/b63bd863-def7-4054-a836-c6c90537e0ab.png"></p>
-<p><img src="https://files.mdnice.com/user/1489/29e92daf-1ec4-4f50-92b2-e8a555a9e3bc.png"></p>
-<h3 id="登录操作"><a href="#登录操作" class="headerlink" title="登录操作"></a>登录操作</h3><p><img src="https://files.mdnice.com/user/1489/f044672e-b952-49f1-801d-fa4cebafe9ab.png"></p>
-<h3 id="发送文件"><a href="#发送文件" class="headerlink" title="发送文件"></a>发送文件</h3><p><img src="https://files.mdnice.com/user/1489/c0101bb6-c185-440f-a931-c4a3ed713bfa.png"></p>
-<h3 id="远程执行指令"><a href="#远程执行指令" class="headerlink" title="远程执行指令"></a>远程执行指令</h3><p><img src="https://files.mdnice.com/user/1489/cff768f1-19f0-4999-9179-746b6d5c293a.png"></p>
-<h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h3><p><a target="_blank" rel="noopener" href="https://blog.mimvp.com/article/37361.html">ref : ssh常用命令</a></p>
+        <p><a target="_blank" rel="noopener" href="https://github.com/KyleAndKelly/ArticleHub">https://github.com/KyleAndKelly/ArticleHub</a></p>
+<h2 id="pubishページ"><a href="#pubishページ" class="headerlink" title="pubishページ"></a>pubishページ</h2><h3 id="リッチテキストエディター"><a href="#リッチテキストエディター" class="headerlink" title="リッチテキストエディター"></a>リッチテキストエディター</h3><p><strong>リッチテキスト</strong>：スタイルや多様なフォーマットを含むテキストで、フロントエンドではタグとインラインスタイルを組み合わせて実現される。</p>
+<p><strong>リッチテキストエディター</strong>：リッチテキストコンテンツを作成するためのコンテナ。</p>
+<p><strong>目標</strong>：記事投稿ページにリッチテキストエディターを統合する。</p>
+<p><strong>使用</strong>：<code>wangEditor</code> プラグイン。</p>
+<p><strong>手順</strong>：</p>
+<ol>
+<li>CSS を導入してスタイルを定義。</li>
+<li>HTML 構造を定義。</li>
+<li>JS を導入してエディターを作成。</li>
+<li>内容変更を監視し、隠しテキストエリアに保存（後でデータ収集しやすいように）。</li>
+</ol>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/ce20b5cc-aa63-cab1-7bf3-1f72d587a0f2.png" alt="image.png"></p>
+<hr>
+<h3 id="チャンネルリスト"><a href="#チャンネルリスト" class="headerlink" title="チャンネルリスト"></a>チャンネルリスト</h3><p><strong>目標</strong>：チャンネルリストを表示し、ユーザーが選択できるようにする。</p>
+<p><strong>手順</strong>：</p>
+<ol>
+<li>チャンネルリストのデータを取得する。</li>
+<li>ドロップダウンメニューに表示する。</li>
+</ol>
+<p><img src="C:\Users\Kyle\AppData\Roaming\Typora\typora-user-images\image-20241124112044365.png" alt="image-20241124112044365"></p>
+<hr>
+<h3 id="カバー設定"><a href="#カバー設定" class="headerlink" title="カバー設定"></a>カバー設定</h3><p><strong>目標</strong>：記事のカバーを設定する。</p>
+<p><strong>手順</strong>：</p>
+<ol>
+<li>タグ構造とスタイルを準備。</li>
+<li>ファイルを選択して <code>FormData</code> に保存。</li>
+<li>画像を個別にアップロードし、画像の URL アドレスを取得。</li>
+<li>プレビューし、<code>img</code> タグで表示（「+」アイコンのアップロードタグを非表示にする）。</li>
+</ol>
+<p><strong>注意</strong>：画像の URL アドレスは一時的に <code>img</code> タグに保存され、記事との関連付けはまだ行われていない。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/4c20ed36-855b-1757-823a-41095255f3a6.png" alt="image.png"></h2><h3 id="データ収集と保存"><a href="#データ収集と保存" class="headerlink" title="データ収集と保存"></a>データ収集と保存</h3><p><strong>目標</strong>：記事内容を収集し、保存する。</p>
+<p><strong>手順</strong>：</p>
+<ol>
+<li><code>form-serialize</code> プラグインを使用してフォームデータを収集する。</li>
+<li><code>axios</code> を使用してサーバーに送信し、保存する。</li>
+<li><code>Alert</code> 警告フレームを呼び出して結果をユーザーにフィードバック。</li>
+<li>フォームをリセットし、リストページにリダイレクトする。<br><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/5505199f-5b31-0527-446c-f6aa767acdf0.png" alt="image.png"></li>
+</ol>
 
     </div>
 
@@ -254,7 +252,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag"># Linux命令</a>
+              <a href="/tags/Notes/" rel="tag"># Notes</a>
           </div>
 
         
@@ -263,12 +261,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/21/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8FC-%E5%AE%9E%E7%8E%B0/" rel="prev" title="原型模式C++实现">
-      <i class="fa fa-chevron-left"></i> 原型模式C++实现
+    <a href="/2024/11/16/Axios-Boostrap%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%80%81%E5%9B%B3%E6%9B%B8%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B/" rel="prev" title="Axios,Boostrapを使って、図書管理システムを作成する">
+      <i class="fa fa-chevron-left"></i> Axios,Boostrapを使って、図書管理システムを作成する
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/25/C-%E4%B8%AD%E7%9A%84extern%E5%85%B3%E9%94%AE%E5%AD%97/" rel="next" title="C++中的extern关键字">
-      C++中的extern关键字 <i class="fa fa-chevron-right"></i>
+    <a href="/2024/11/24/%E3%80%90ArticleHub-Project-%E3%83%8E%E3%83%BC%E3%83%88%E3%80%9102-Login%E3%83%9A%E3%83%BC%E3%82%B8%E3%81%AE%E9%96%8B%E7%99%BA/" rel="next" title="【ArticleHub-Project-ノート】02-Loginページの開発">
+      【ArticleHub-Project-ノート】02-Loginページの開発 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -328,7 +326,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">1.</span> <span class="nav-text">SSH的含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E7%9A%84%E5%8E%86%E5%8F%B2"><span class="nav-number">2.</span> <span class="nav-text">SSH的历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E7%9A%84%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">SSH的原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%8F%A3%E4%BB%A4%E7%9A%84%E8%AE%A4%E8%AF%81-%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="nav-number">3.0.1.</span> <span class="nav-text">基于口令的认证-密码登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%AC%E9%92%A5%E7%9A%84%E8%AE%A4%E8%AF%81-%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="nav-number">3.0.2.</span> <span class="nav-text">基于公钥的认证-免密码登录</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E7%9A%84%E6%9C%89%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">SSH的有关命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5"><span class="nav-number">4.1.</span> <span class="nav-text">生成密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E5%BD%95%E6%93%8D%E4%BD%9C"><span class="nav-number">4.2.</span> <span class="nav-text">登录操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E9%80%81%E6%96%87%E4%BB%B6"><span class="nav-number">4.3.</span> <span class="nav-text">发送文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A4"><span class="nav-number">4.4.</span> <span class="nav-text">远程执行指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="nav-number">4.5.</span> <span class="nav-text">其他命令</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pubish%E3%83%9A%E3%83%BC%E3%82%B8"><span class="nav-number">1.</span> <span class="nav-text">pubishページ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%83%AA%E3%83%83%E3%83%81%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF%E3%83%BC"><span class="nav-number">1.1.</span> <span class="nav-text">リッチテキストエディター</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB%E3%83%AA%E3%82%B9%E3%83%88"><span class="nav-number">1.2.</span> <span class="nav-text">チャンネルリスト</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%82%AB%E3%83%90%E3%83%BC%E8%A8%AD%E5%AE%9A"><span class="nav-number">1.3.</span> <span class="nav-text">カバー設定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%8E%E9%9B%86%E3%81%A8%E4%BF%9D%E5%AD%98"><span class="nav-number">2.1.</span> <span class="nav-text">データ収集と保存</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
