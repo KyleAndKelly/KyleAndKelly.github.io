@@ -20,20 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":400,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="原型模式C++实现">
+  <meta name="description" content="1. React における「ローカルストレージ」の問題 React のコンポーネント自体には state（状態）があり、これは各部屋にある小さなホワイトボードのようなものです。このホワイトボードはとても便利で、何かを書く（データを保存する）ことも、消す（データを更新する）ことも簡単です。  しかし、複数の部屋がこのホワイトボードの内容を共有する必要があると、問題が発生します：  例えば、部屋 A">
 <meta property="og:type" content="article">
-<meta property="og:title" content="原型模式C++实现">
-<meta property="og:url" content="http://example.com/2022/05/21/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8FC-%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:title" content="なぜReduxを使用するのか？">
+<meta property="og:url" content="http://example.com/2024/12/08/%E3%81%AA%E3%81%9CRedux%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B%EF%BC%9F/index.html">
 <meta property="og:site_name" content="Kyle Chen&#39;s Blog">
-<meta property="og:description" content="原型模式C++实现">
+<meta property="og:description" content="1. React における「ローカルストレージ」の問題 React のコンポーネント自体には state（状態）があり、これは各部屋にある小さなホワイトボードのようなものです。このホワイトボードはとても便利で、何かを書く（データを保存する）ことも、消す（データを更新する）ことも簡単です。  しかし、複数の部屋がこのホワイトボードの内容を共有する必要があると、問題が発生します：  例えば、部屋 A">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-20T23:47:46.000Z">
-<meta property="article:modified_time" content="2022-05-20T23:50:45.814Z">
+<meta property="article:published_time" content="2024-12-08T03:51:30.000Z">
+<meta property="article:modified_time" content="2024-12-08T02:51:46.281Z">
 <meta property="article:author" content="陈同学">
-<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/05/21/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8FC-%E5%AE%9E%E7%8E%B0/">
+<link rel="canonical" href="http://example.com/2024/12/08/%E3%81%AA%E3%81%9CRedux%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B%EF%BC%9F/">
 
 
 <script id="page-configurations">
@@ -46,7 +45,7 @@
   };
 </script>
 
-  <title>原型模式C++实现 | Kyle Chen's Blog</title>
+  <title>なぜReduxを使用するのか？ | Kyle Chen's Blog</title>
   
 
 
@@ -153,7 +152,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/21/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8FC-%E5%AE%9E%E7%8E%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/08/%E3%81%AA%E3%81%9CRedux%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B%EF%BC%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/1.jpg">
@@ -166,7 +165,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          原型模式C++实现
+          なぜReduxを使用するのか？
         </h1>
 
         <div class="post-meta">
@@ -177,20 +176,10 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2022-05-21 07:47:46 / 修改时间：07:50:45" itemprop="dateCreated datePublished" datetime="2022-05-21T07:47:46+08:00">2022-05-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a>
-                </span>
+              <time title="创建时间：2024-12-08 11:51:30 / 修改时间：10:51:46" itemprop="dateCreated datePublished" datetime="2024-12-08T11:51:30+08:00">2024-12-08</time>
             </span>
 
           
-            <div class="post-description"> 原型模式C++实现</div>
 
         </div>
       </header>
@@ -201,10 +190,66 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/huangyimo/article/details/80390001">原型模式有什么用？</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chenxun_2010/article/details/48327231">原型模式怎么实现?</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Resume</span>&#123;</span><br><span class="line">    <span class="keyword">protected</span>:</span><br><span class="line">        <span class="type">char</span>* name;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> Resume* <span class="title">clone</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ConcreteResume</span>:<span class="keyword">public</span> Resume&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">ConcreteResume</span>(<span class="type">char</span>* str)&#123;</span><br><span class="line">             name = <span class="keyword">new</span> <span class="type">char</span>[<span class="built_in">strlen</span>(str)+<span class="number">1</span>];</span><br><span class="line">             <span class="built_in">strcpy</span>(name,str);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">ConcreteResume</span>(<span class="type">const</span> ConcreteResume&amp; r1)&#123;</span><br><span class="line">            name = <span class="keyword">new</span> <span class="type">char</span>[<span class="built_in">strlen</span>(r1.name)+<span class="number">1</span>];</span><br><span class="line">            <span class="built_in">strcpy</span>(name,r1.name);</span><br><span class="line">        &#125;</span><br><span class="line">        ConcreteResume&amp; <span class="keyword">operator</span>&amp;=(<span class="type">const</span> ConcreteResume&amp; r1)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span> == &amp;r1)&#123;<span class="keyword">return</span> *<span class="keyword">this</span>;&#125;</span><br><span class="line">            <span class="keyword">delete</span>[] name;</span><br><span class="line">            name = <span class="keyword">new</span> <span class="type">char</span>[<span class="built_in">strlen</span>(r1.name)+<span class="number">1</span>];</span><br><span class="line">            <span class="built_in">strcpy</span>(name,r1.name);</span><br><span class="line">            <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function">ConcreteResume* <span class="title">clone</span><span class="params">()</span> <span class="keyword">override</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">ConcreteResume</span>(*<span class="keyword">this</span>);</span><br><span class="line">        &#125; </span><br><span class="line">       <span class="comment">//debug</span></span><br><span class="line">       <span class="function"><span class="type">void</span> <span class="title">PinrtInfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">           <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">strlen</span>(name);i++)&#123;</span><br><span class="line">                cout&lt;&lt;name[i]&lt;&lt;endl;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="type">char</span> str[]  = <span class="string">&quot;happy&quot;</span>;</span><br><span class="line">    <span class="function">ConcreteResume <span class="title">r1</span><span class="params">(str)</span></span>;</span><br><span class="line">    <span class="function">ConcreteResume <span class="title">r2</span><span class="params">(r1)</span></span>;</span><br><span class="line">    <span class="type">char</span> str1[]  = <span class="string">&quot;helloworld&quot;</span>;</span><br><span class="line">    <span class="function">ConcreteResume <span class="title">r3</span><span class="params">(str1)</span></span>;</span><br><span class="line">    r3 = r1;</span><br><span class="line">    <span class="comment">// r3.PinrtInfo();</span></span><br><span class="line">    ConcreteResume *r4 = r3.<span class="built_in">clone</span>();</span><br><span class="line">    r4-&gt;<span class="built_in">PinrtInfo</span>();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <h3 id="1-React-における「ローカルストレージ」の問題"><a href="#1-React-における「ローカルストレージ」の問題" class="headerlink" title="1. React における「ローカルストレージ」の問題"></a>1. React における「ローカルストレージ」の問題</h3><ul>
+<li><p>React のコンポーネント自体には state（状態）があり、これは各部屋にある小さなホワイトボードのようなものです。このホワイトボードはとても便利で、何かを書く（データを保存する）ことも、消す（データを更新する）ことも簡単です。</p>
+</li>
+<li><p>しかし、複数の部屋がこのホワイトボードの内容を共有する必要があると、問題が発生します：</p>
+</li>
+<li><p>例えば、部屋 A に「ユーザーのログイン状態」が書かれている場合、部屋 B もユーザーがログインしているかどうかを知る必要があります。</p>
+</li>
+<li><p>この場合、A 部屋から B 部屋に情報を渡す必要があります（props を使って）。でも、部屋がさらに増えて、A -&gt; B -&gt; C -&gt; D というように、情報を渡し続けるのは非常に面倒です。</p>
+</li>
+</ul>
+<h3 id="2-Redux-が提供する「集中ストレージ」"><a href="#2-Redux-が提供する「集中ストレージ」" class="headerlink" title="2. Redux が提供する「集中ストレージ」"></a>2. Redux が提供する「集中ストレージ」</h3><ul>
+<li><p>Redux の役割は、大きな倉庫を作り、すべての部屋（コンポーネント）が重要な情報をその倉庫に保存できるようにすることです。</p>
+</li>
+<li><p>各部屋が情報を必要とするときは、倉庫から直接取り出すことができ、情報を一つ一つ渡す必要はありません。</p>
+</li>
+<li><p>簡単な例を挙げてみましょう：</p>
+</li>
+<li><p>あなたがコンビニを経営しているとしましょう。</p>
+</li>
+<li><p>React の state の方法は、各レジ係（コンポーネント）が自分の現在の収支を記録することです。</p>
+</li>
+<li><p>しかし、コンビニ全体の総収入を集計する場合、すべてのレジ係の記録を持ってきて、1つ1つ加算しなければなりません。</p>
+</li>
+<li><p>Redux の方法では、すべてのレジ係（コンポーネント）が同じ帳簿（Redux 倉庫）に記帳します。そして、総収入を知りたいときは、帳簿を確認すれば良いのです。</p>
+</li>
+</ul>
+<h3 id="3-Redux-の核心機能"><a href="#3-Redux-の核心機能" class="headerlink" title="3. Redux の核心機能"></a>3. Redux の核心機能</h3><ul>
+<li><p>Redux はいくつかのシンプルで強力な機能を提供します：</p>
+</li>
+<li><p><strong>統一ストレージ（Store）</strong>：中央の倉庫のようなもので、すべてのデータがここで一元管理されます。</p>
+</li>
+<li><p><strong>アクション（Action）</strong>：倉庫のデータを更新したい場合は、「アクション」を発行する必要があります。これは、何を変更するかを示す申請書のようなものです。</p>
+</li>
+<li><p><strong>リデューサー（Reducer）</strong>：すべての更新は事前に定められたルールに従って行われ、各変更が予測可能で管理可能であることを保証します。</p>
+</li>
+</ul>
+<h3 id="4-Redux-を使った実際のプロジェクトでの利点"><a href="#4-Redux-を使った実際のプロジェクトでの利点" class="headerlink" title="4. Redux を使った実際のプロジェクトでの利点"></a>4. Redux を使った実際のプロジェクトでの利点</h3><ul>
+<li><p>例えば、あなたが eコマースサイトを開発しているとしましょう。以下の機能があります：</p>
+</li>
+<li><p>ユーザーがログインした後、ショッピングカートにはユーザーのアイテム数が表示されます。</p>
+</li>
+<li><p>他のページ（例えば、注文ページ）でも、ユーザーのログイン状態やカートの内容を知る必要があります。</p>
+</li>
+<li><p>ユーザーがカートページで商品を追加した場合、決済ページにもすぐにそのデータを更新しなければなりません。</p>
+</li>
+<li><p>もし Redux を使わない場合、次のようにする必要があります：</p>
+</li>
+<li><p>ショッピングカートページで state を更新します。</p>
+</li>
+<li><p>その後、props を使ってデータを結算ページに渡します。</p>
+</li>
+<li><p>しかし、Redux を使うと、次のように簡単になります：</p>
+</li>
+<li><p>ショッピングカートページで「商品を追加する」というアクション（Action）を送信します。</p>
+</li>
+<li><p>Redux はそのアクションに基づいて倉庫のデータを更新します（Reducer）。</p>
+</li>
+<li><p>他のページ（例えば、決済ページ）は自動的に最新のデータを取得します。なぜなら、それらは直接倉庫に接続しているからです（connect を通じて）。</p>
+</li>
+</ul>
 
     </div>
 
@@ -213,9 +258,6 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
-          </div>
 
         
 
@@ -223,12 +265,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/05/20/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E6%97%B6%E7%9A%84%E5%B8%B8%E7%94%A8%E7%AE%97%E6%B3%95/" rel="prev" title="系统设计时的常用算法">
-      <i class="fa fa-chevron-left"></i> 系统设计时的常用算法
+    <a href="/2024/12/08/React%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%95%E3%83%83%E3%82%AF%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/" rel="prev" title="Reactのカスタムフックについて">
+      <i class="fa fa-chevron-left"></i> Reactのカスタムフックについて
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/05/24/SSH%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" rel="next" title="SSH的原理及常用命令">
-      SSH的原理及常用命令 <i class="fa fa-chevron-right"></i>
+    <a href="/2024/12/08/Redux-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9/" rel="next" title="Redux の使い方">
+      Redux の使い方 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -288,6 +330,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-React-%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%80%8C%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8%E3%80%8D%E3%81%AE%E5%95%8F%E9%A1%8C"><span class="nav-number">1.</span> <span class="nav-text">1. React における「ローカルストレージ」の問題</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Redux-%E3%81%8C%E6%8F%90%E4%BE%9B%E3%81%99%E3%82%8B%E3%80%8C%E9%9B%86%E4%B8%AD%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8%E3%80%8D"><span class="nav-number">2.</span> <span class="nav-text">2. Redux が提供する「集中ストレージ」</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Redux-%E3%81%AE%E6%A0%B8%E5%BF%83%E6%A9%9F%E8%83%BD"><span class="nav-number">3.</span> <span class="nav-text">3. Redux の核心機能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Redux-%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E5%AE%9F%E9%9A%9B%E3%81%AE%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%A7%E3%81%AE%E5%88%A9%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">4. Redux を使った実際のプロジェクトでの利点</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -20,17 +20,24 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":400,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://example.com/categories/index.html">
+  <meta name="description" content="インターフェース説明 useEffectはReactのHook関数であり、Reactコンポーネント内でイベントによるものではなく、レンダリングそのものによって引き起こされる操作（副作用）を作成するために使用されます。たとえば、AJAXリクエストの送信やDOMの変更などが含まれます。  ページのレンダリング後、またはページ内のコンポーネントに変化があった際に実行される操作として理解できます。  第1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ReactのuseEffectについて">
+<meta property="og:url" content="http://example.com/2024/12/08/React%E3%81%AEuseEffect%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/index.html">
 <meta property="og:site_name" content="Kyle Chen&#39;s Blog">
+<meta property="og:description" content="インターフェース説明 useEffectはReactのHook関数であり、Reactコンポーネント内でイベントによるものではなく、レンダリングそのものによって引き起こされる操作（副作用）を作成するために使用されます。たとえば、AJAXリクエストの送信やDOMの変更などが含まれます。  ページのレンダリング後、またはページ内のコンポーネントに変化があった際に実行される操作として理解できます。  第1">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-04T08:28:39.000Z">
-<meta property="article:modified_time" content="2022-04-04T08:29:18.506Z">
+<meta property="og:image" content="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/f58f7a36-3b4d-9b68-d877-e6d065148967.png">
+<meta property="og:image" content="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/98bb078f-6886-d815-b5ab-4257a478f0a0.png">
+<meta property="og:image" content="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/1d5f230a-a3d5-2737-0d9e-aa23a1137df0.png">
+<meta property="og:image" content="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/195072ff-3f6d-bd6a-7724-19229d0fcf28.png">
+<meta property="article:published_time" content="2024-12-08T03:48:19.000Z">
+<meta property="article:modified_time" content="2024-12-08T02:48:30.051Z">
 <meta property="article:author" content="陈同学">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/f58f7a36-3b4d-9b68-d877-e6d065148967.png">
 
-<link rel="canonical" href="http://example.com/categories/">
+<link rel="canonical" href="http://example.com/2024/12/08/React%E3%81%AEuseEffect%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/">
 
 
 <script id="page-configurations">
@@ -38,13 +45,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>categories | Kyle Chen's Blog
-</title>
+  <title>ReactのuseEffectについて | Kyle Chen's Blog</title>
   
 
 
@@ -143,51 +149,103 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/08/React%E3%81%AEuseEffect%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpg">
+      <meta itemprop="name" content="陈同学">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kyle Chen's Blog">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ReactのuseEffectについて
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">categories
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-<div class="post-meta">
+              <time title="创建时间：2024-12-08 11:48:19 / 修改时间：10:48:30" itemprop="dateCreated datePublished" datetime="2024-12-08T11:48:19+08:00">2024-12-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="インターフェース説明"><a href="#インターフェース説明" class="headerlink" title="インターフェース説明"></a>インターフェース説明</h2><ul>
+<li><p>useEffectはReactのHook関数であり、Reactコンポーネント内でイベントによるものではなく、レンダリングそのものによって引き起こされる操作（副作用）を作成するために使用されます。たとえば、AJAXリクエストの送信やDOMの変更などが含まれます。</p>
+</li>
+<li><p>ページのレンダリング後、またはページ内のコンポーネントに変化があった際に実行される操作として理解できます。</p>
+</li>
+<li><p>第1引数は関数で、副作用関数と呼ぶことができます。この関数内に実行したい操作を記述します。  </p>
+</li>
+<li><p>第2引数は配列（省略可能）で、この配列に依存項を指定します。異なる依存項が第1引数の関数の実行に影響を与えます。配列が空の場合、副作用関数はコンポーネントのレンダリング後に一度だけ実行されます。</p>
+</li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/f58f7a36-3b4d-9b68-d877-e6d065148967.png" alt="image.png"></p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/98bb078f-6886-d815-b5ab-4257a478f0a0.png" alt="image.png"></p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/1d5f230a-a3d5-2737-0d9e-aa23a1137df0.png" alt="image.png"></p>
+<p><img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/3916068/195072ff-3f6d-bd6a-7724-19229d0fcf28.png" alt="image.png"></p>
+<h2 id="依存項"><a href="#依存項" class="headerlink" title="依存項"></a>依存項</h2><ul>
+<li>useEffectの副作用関数が実行されるタイミングは、指定された依存項によって異なります。</li>
+<li>依存項    副作用関数の実行タイミング</li>
+<li>依存項なし    コンポーネント初期レンダリング＋更新時</li>
+<li>空の配列    初期レンダリング時に1回のみ実行</li>
+<li>特定の依存項あり    初期レンダリング＋依存項が変化した時</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/12/08/React-%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%80%81%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88%E6%AC%84%E3%81%AE%E6%A9%9F%E8%83%BD%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B/" rel="prev" title="React 使用して、コメント欄の機能を作成する">
+      <i class="fa fa-chevron-left"></i> React 使用して、コメント欄の機能を作成する
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/12/08/React%E3%81%AE%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%81%A8useState%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/" rel="next" title="ReactのコンポーネントとuseStateについて">
+      ReactのコンポーネントとuseStateについて <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="category-all-page">
-            <div class="category-all-title">
-              目前共计 10 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/EDA/">EDA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Leetcode/">Leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux-Command/">Linux Command</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux%E5%91%BD%E4%BB%A4/">Linux命令</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Notes/">Notes</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TCL/">TCL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">经验总结</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">7</span></li></ul>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
@@ -238,6 +296,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%95%E3%82%A7%E3%83%BC%E3%82%B9%E8%AA%AC%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">インターフェース説明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E5%AD%98%E9%A0%85"><span class="nav-number">3.</span> <span class="nav-text">依存項</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
