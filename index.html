@@ -147,6 +147,109 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/15/Mock-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%92-10-%E5%88%86%E3%81%A7%E6%A7%8B%E7%AF%89%EF%BC%81json-server-%E5%AE%8C%E5%85%A8%E3%82%AC%E3%82%A4%E3%83%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/1.jpg">
+      <meta itemprop="name" content="陈同学">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kyle Chen's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/12/15/Mock-%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%92-10-%E5%88%86%E3%81%A7%E6%A7%8B%E7%AF%89%EF%BC%81json-server-%E5%AE%8C%E5%85%A8%E3%82%AC%E3%82%A4%E3%83%89/" class="post-title-link" itemprop="url">Mock サービスを 10 分で構築！json-server 完全ガイド</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-12-15 15:12:13 / 修改时间：14:12:28" itemprop="dateCreated datePublished" datetime="2024-12-15T15:12:13+08:00">2024-12-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="json-server-を使った-Mock-サービスの作成方法"><a href="#json-server-を使った-Mock-サービスの作成方法" class="headerlink" title="json-server を使った Mock サービスの作成方法"></a>json-server を使った Mock サービスの作成方法</h2><h3 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h3><p>Web アプリケーション開発では、バックエンド API がまだ完成していない場合に、Mock サービスを使うことで開発をスムーズに進めることができます。<code>json-server</code> は、JSON ファイルを使って簡単に Mock API を構築できる便利なツールです。このブログでは、<code>json-server</code> を使った Mock サービスの作成手順を説明します。</p>
+<hr>
+<h3 id="必要な準備"><a href="#必要な準備" class="headerlink" title="必要な準備"></a>必要な準備</h3><p>以下のツールがインストールされていることを確認してください：</p>
+<ul>
+<li>Node.js</li>
+<li>npm (Node.js に含まれています)</li>
+</ul>
+<hr>
+<h3 id="json-server-のインストール"><a href="#json-server-のインストール" class="headerlink" title="json-server のインストール"></a>json-server のインストール</h3><p>まず、<code>json-server</code> をグローバルにインストールします。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g json-server</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="データベースファイル-db-json-の準備"><a href="#データベースファイル-db-json-の準備" class="headerlink" title="データベースファイル (db.json) の準備"></a>データベースファイル (db.json) の準備</h3><p><code>json-server</code> は、JSON ファイルをデータベースとして使用します。以下のようなファイルを用意してください。</p>
+<p><code>db.json</code> の例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;users&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;山田太郎&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;taro@example.com&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;鈴木花子&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;email&quot;</span><span class="punctuation">:</span> <span class="string">&quot;hanako@example.com&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;posts&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;title&quot;</span><span class="punctuation">:</span> <span class="string">&quot;はじめてのブログ&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;content&quot;</span><span class="punctuation">:</span> <span class="string">&quot;これはサンプルのブログ記事です。&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>このファイルはアプリケーションのルートディレクトリに配置してください。</p>
+<hr>
+<h3 id="Mock-サーバーの起動"><a href="#Mock-サーバーの起動" class="headerlink" title="Mock サーバーの起動"></a>Mock サーバーの起動</h3><p>以下のコマンドで <code>json-server</code> を起動します：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">json-server --watch db.json</span><br></pre></td></tr></table></figure>
+
+<p>成功すると、以下のようなメッセージが表示されます：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">\&#123;^_^&#125;/ hi!</span><br><span class="line"></span><br><span class="line">Loading db.json</span><br><span class="line">Done</span><br><span class="line"></span><br><span class="line">Resources</span><br><span class="line">http://localhost:3000/users</span><br><span class="line">http://localhost:3000/posts</span><br><span class="line"></span><br><span class="line">Home</span><br><span class="line">http://localhost:3000</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="API-の使用例"><a href="#API-の使用例" class="headerlink" title="API の使用例"></a>API の使用例</h3><ol>
+<li><p><strong>ユーザーリストの取得</strong></p>
+<p>GET リクエストを送信：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://localhost:3000/users</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>新しいユーザーの追加</strong></p>
+<p>POST リクエストを送信：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -H <span class="string">&quot;Content-Type: application/json&quot;</span> -d <span class="string">&#x27;&#123;&quot;name&quot;: &quot;佐藤一郎&quot;, &quot;email&quot;: &quot;ichiro@example.com&quot;&#125;&#x27;</span> http://localhost:3000/users</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>ユーザー情報の更新</strong></p>
+<p>PUT リクエストを送信：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X PUT -H <span class="string">&quot;Content-Type: application/json&quot;</span> -d <span class="string">&#x27;&#123;&quot;name&quot;: &quot;佐藤次郎&quot;, &quot;email&quot;: &quot;jiro@example.com&quot;&#125;&#x27;</span> http://localhost:3000/users/1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>ユーザーの削除</strong></p>
+<p>DELETE リクエストを送信：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X DELETE http://localhost:3000/users/1</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h3 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h3><p><code>json-server</code> を使えば、簡単に Mock サービスを構築し、フロントエンド開発を効率化できます。設定もシンプルで、JSON ファイルを編集するだけで API を変更できるため、とても柔軟です。</p>
+<p>ぜひ、開発プロジェクトで活用してみてください！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/08/Redux-%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -910,87 +1013,6 @@ function Example() &#123;
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/16/Axios-Boostrap%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%80%81%E5%9B%B3%E6%9B%B8%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/1.jpg">
-      <meta itemprop="name" content="陈同学">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kyle Chen's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/11/16/Axios-Boostrap%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%80%81%E5%9B%B3%E6%9B%B8%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B/" class="post-title-link" itemprop="url">Axios,Boostrapを使って、図書管理システムを作成する</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-11-16 00:36:59" itemprop="dateCreated datePublished" datetime="2024-11-16T00:36:59+08:00">2024-11-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-11-24 10:59:10" itemprop="dateModified" datetime="2024-11-24T10:59:10+08:00">2024-11-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Notes/" itemprop="url" rel="index"><span itemprop="name">Notes</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p> </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/11/16/Axios-Boostrap%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%80%81%E5%9B%B3%E6%9B%B8%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1062,7 +1084,7 @@ function Example() &#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
